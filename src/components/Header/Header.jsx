@@ -32,8 +32,8 @@ export default class Header extends Component {
               </Link>
             </Menu.Item>
             <Menu.Item>
-              <Link className="nav-link" to="/">
-                Link 2
+              <Link className="nav-link" to="/registration">
+                Registration
               </Link>
             </Menu.Item>
           </Menu>
