@@ -1,6 +1,29 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300');
+
 .footer {
-
+    align-items: center;
+    display: flex;
+    font-family: Roboto;
+    font-weight: 300;
+    height: 180px;
+    &__icon {
+        margin: 0 46px;
+    }
     &__copy {
-
+        font-size: 1.1em;
+    }
+    &--background-color_dark {
+        background-color: #18171D;
+        color: #FFFFFF;
+        path {
+            fill: #FFFFFF;
+        }
+    }
+    &--background-color_light {
+        background-color: #FFFFFF;
+        color: #18171D;
+        path {
+            fill: #18171D;
+        }
     }
 }
