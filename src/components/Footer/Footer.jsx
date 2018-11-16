@@ -6,8 +6,8 @@ import { Container } from "semantic-ui-react";
 export default class Footer extends Component {
   render() {
     return (
-      <Container>
-        <footer className="footer footer--background-color_dark">
+      <footer className="footer footer--background-color_dark">
+        <Container>
           <svg
             className="footer__icon"
             width="49"
@@ -21,8 +21,8 @@ export default class Footer extends Component {
             />
           </svg>
           <p className="footer__copy">&copy; MEETEAMATE 2018</p>
-        </footer>
-      </Container>
+        </Container>
+      </footer>
     );
   }
 }
