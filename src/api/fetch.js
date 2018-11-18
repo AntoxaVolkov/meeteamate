@@ -40,6 +40,8 @@ export function publicFetch(pathAPI, method, data) {
 }
 
 export function castomFetch(pathAPI, method, data, token) {
+  const conf = { method: "GET" };
+
   const headers = {
     Accept: "application/json",
     "Content-Type": "application/json"
@@ -47,11 +49,18 @@ export function castomFetch(pathAPI, method, data, token) {
   if (token) {
     headers["Authorization"] = `Bearer ${token}`;
   }
-  return fetch(`${baseUrlApi}${pathAPI}`, {
-    method: method,
-    header,
-    body: JSON.stringify(data)
-  })
+
+  if (method) {
+    conf["method"] = method;
+  }
+
+  if (data) {
+    conf["body"] = JSON.stringify(data);
+  }
+
+  conf["headers"] = headers;
+
+  return fetch(`${baseUrlApi}${pathAPI}`, conf)
     .then(checkHttpStatus)
     .then(parseJSON);
 }

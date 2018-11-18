@@ -20,7 +20,7 @@ export default function requireAuthentication(Component) {
     render() {
       return (
         <div>
-          {this.checkAuth() === true ? (
+          {this.checkAuth() === true && !this.props.isAuthenticating ? (
             <Component {...this.props} />
           ) : (
             <Redirect

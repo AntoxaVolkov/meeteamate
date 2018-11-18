@@ -19,6 +19,7 @@ module.exports = {
       api: path.resolve(__dirname, "src", "api"),
       reducers: path.resolve(__dirname, "src", "reducers"),
       images: path.resolve(__dirname, "src", "assets", "images"),
+      utils: path.resolve(__dirname, "src", "utils"),
       middleware: path.resolve(__dirname, "src", "middleware")
     }
   },

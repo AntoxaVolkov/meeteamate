@@ -67,7 +67,7 @@ const mapStateToProps = (state, ownProps) => {
 function mapDispatchToProps(dispatch, props) {
   return {
     ...props,
-    login: data => login(dispatch)(data)
+    login: data => dispatch(login(data))
   };
 }
 

@@ -45,7 +45,7 @@ function mapDispatchToProps(dispatch, props) {
   return {
     ...props,
     registration: userData => {
-      registration(dispatch)(userData);
+      dispatch(registration(userData));
     }
   };
 }

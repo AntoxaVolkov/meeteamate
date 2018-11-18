@@ -38,7 +38,8 @@ function register(userData) {
 }
 
 function getUser(token) {
-  return publicFetch("", "GET", "", token);
+  console.log(token + " gjkghjghj");
+  return castomFetch("", "GET", "", token);
 }
 
 const Users = {

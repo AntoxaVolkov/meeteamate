@@ -33,7 +33,7 @@ const mapStateToProps = (state, ownProps) => {
 function mapDispatchToProps(dispatch, props) {
   return {
     ...props,
-    refresh: () => reLogin(dispatch)()
+    refresh: () => dispatch(reLogin())
   };
 }
 
