@@ -71,7 +71,8 @@ module.exports = {
     ]
   },
   devServer: {
-    historyApiFallback: true
+    historyApiFallback: true,
+    stats: "errors-only"
   },
   plugins: [
     new CleanWebpackPlugin(["dist"]),
