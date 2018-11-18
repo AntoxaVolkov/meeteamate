@@ -1,3 +1,9 @@
-.layout {
+.layout{
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
 
+.layout__page {
+  flex: 1 0 auto;
 }
