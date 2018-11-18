@@ -1,10 +1,10 @@
 import { createStore, applyMiddleware, compose } from "redux";
+import ReduxThunk from "redux-thunk";
 import rootReducer from "reducers";
-//import callAPIMiddleware from 'middleware/callAPIMiddleware';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 export default createStore(
   rootReducer,
-  composeEnhancers(/*applyMiddleware(callAPIMiddleware)*/)
+  composeEnhancers(applyMiddleware(ReduxThunk))
 );

@@ -1,0 +1,11 @@
+/**************
+*** Semantic bag fix
+************/
+
+/***** Dropdown ****/
+
+.ui.dropdown{
+    .visible{
+        display: block;
+    }
+}

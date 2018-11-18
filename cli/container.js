@@ -5,11 +5,12 @@ const createContainer = function(componentName) {
   containerName = `${componentName}Container`;
 
   const containerCode = `import React, { PureComponent } from 'react';
+import { connect } from "react-redux";
 import PropTypes from 'prop-types';
 
 import ${componentName} from 'components/${componentName}';
 
-export default class ${containerName} extends PureComponent {
+class ${containerName} extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {};
@@ -27,6 +28,23 @@ export default class ${containerName} extends PureComponent {
     );
   }
 }
+
+const mapStateToProps = (state, ownProps) => {
+  return {
+    ...ownProps
+  };
+};
+
+function mapDispatchToProps(dispatch, props) {
+  return {
+    ...props
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(${containerName});
   `;
 
   fs.writeFileSync(
