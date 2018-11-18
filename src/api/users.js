@@ -1,29 +1,51 @@
-const usersAPI = {
-  base: "http://localhost:3000",
-  async getUsers(limit, currentPage) {
-    const res = await new Promise((res, rej) => {
-      setTimeout(() => {
-        res({
-          users: [
-            {
-              name: "Паша",
-              age: "24"
-            },
-            {
-              name: "Маша",
-              age: "25"
-            },
-            {
-              name: "Саша",
-              age: "26"
-            }
-          ],
-          count: 3
-        });
-      }, 2000);
-    });
-    return res;
-  }
+import {
+  baseUrlApi,
+  checkHttpStatus,
+  parseJSON,
+  publicFetch,
+  castomFetch
+} from "./fetch";
+
+function auth({ email, password }) {
+  let body = encodeURI(`email=${email}&password=${password}`);
+  return fetch(`${baseUrlApi}auth/login`, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    body
+  })
+    .then(checkHttpStatus)
+    .then(parseJSON);
+}
+
+function refresh(refreshToken) {
+  return fetch(`${baseUrlApi}auth/refresh`, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/x-www-form-urlencoded",
+      Authorization: `Bearer ${refreshToken}`
+    }
+  })
+    .then(checkHttpStatus)
+    .then(parseJSON);
+}
+
+function register(userData) {
+  return publicFetch("auth/register", "POST", userData);
+}
+
+function getUser(token) {
+  return publicFetch("", "GET", "", token);
+}
+
+const Users = {
+  auth,
+  refresh,
+  register,
+  getUser
 };
 
-export default usersAPI;
+export default Users;

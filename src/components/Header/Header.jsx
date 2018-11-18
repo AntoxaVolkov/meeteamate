@@ -7,6 +7,8 @@ import { Container, Menu } from "semantic-ui-react";
 import classNames from "classnames";
 import PropTypes from "prop-types";
 
+import ProfoleBarContainer from "containers/ProfileBarContainer";
+
 export default class Header extends Component {
   static propTypes = {};
 
@@ -15,7 +17,6 @@ export default class Header extends Component {
   render() {
     const {} = this.props;
     const headerClass = classNames("header");
-
     return (
       <header className={headerClass}>
         <Container>
@@ -36,6 +37,8 @@ export default class Header extends Component {
                 Link 2
               </Link>
             </Menu.Item>
+            <Menu.Menu position="right" />
+            <ProfoleBarContainer />
           </Menu>
         </Container>
       </header>
