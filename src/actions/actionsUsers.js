@@ -1,12 +1,11 @@
 import { createAction } from "redux-actions";
 
-import usersAPI from "api/users";
+import Users from "api/users";
 
 // Пример
 export const loadListUsers = dispatch => (limit, currentPage) => {
   dispatch(loadUsersRequest()); // Говорим что загрузка пользователей началась
-  usersAPI
-    .getUsers(limit, currentPage)
+  Users.getUsers(limit, currentPage)
     .then(res => {
       dispatch(loadUsersSuccsess(res)); // Говорим что загрузка пользователей завершилась успехом, и передаем список
     })
