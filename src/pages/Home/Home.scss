@@ -1,6 +1,27 @@
-.home-page{
-    &__register-form{
-        width: 400px;
-        margin: 30px auto;
-    }
+.home-page__text {
+  background-color: white;
+  border-radius: 20px;
+  font-size: 2em;
+  padding: 25px;
+  text-align: center;
+}
+
+.home-page__opportunities {
+  font-size: 4em;
+  text-align: center;
+}
+
+.home-page__opportunitie {
+  align-items: center;
+  background-color: white;
+  border-radius: 20px;
+  display: flex;
+  font-size: 2em;
+  justify-content: space-around;
+  margin-bottom: 50px;
+  padding: 25px;
+}
+
+.home-page__opportunitie:nth-child(even) {
+  flex-direction: row-reverse;
 }
