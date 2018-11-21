@@ -16,7 +16,10 @@ export default class Header extends Component {
 
   render() {
     const {} = this.props;
-    const headerClass = classNames("header");
+    const headerClass =
+      window.location.pathname === "/"
+        ? classNames("header", "header--in-top")
+        : classNames("header");
     return (
       <header className={headerClass}>
         <Container>
