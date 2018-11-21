@@ -7,7 +7,7 @@ const createComponent = function(componentName, className) {
   );
 
   const componentCode = `import "./${componentName}.scss";
-    
+
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
@@ -21,7 +21,7 @@ export default class ${componentName} extends PureComponent {
   static propTypes = {};
 
   static defaultProps = {};
-      
+
   render() {
     const {} = this.props;
 
@@ -30,7 +30,7 @@ export default class ${componentName} extends PureComponent {
     );
   }
 }
-    `;
+`;
 
   fs.writeFileSync(
     path.resolve(
@@ -54,8 +54,9 @@ export default class ${componentName} extends PureComponent {
       "index.js"
     ),
     `import ${componentName} from "./${componentName}";
-        
-export default ${componentName};`
+
+export default ${componentName};
+`
   );
 
   fs.writeFileSync(
