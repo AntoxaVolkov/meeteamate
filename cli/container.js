@@ -15,7 +15,7 @@ class ${containerName} extends PureComponent {
     super(props);
     this.state = {};
   }
-  
+
   static propTypes = {};
 
   static defaultProps = {};
@@ -45,7 +45,7 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(${containerName});
-  `;
+`;
 
   fs.writeFileSync(
     path.resolve(__dirname, "..", "src", "containers", `${containerName}.jsx`),
