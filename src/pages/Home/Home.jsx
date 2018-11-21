@@ -3,8 +3,8 @@ import "./Home.scss";
 import React, { Component } from "react";
 import { Container } from "semantic-ui-react";
 
-import RegisterFormContainer from "containers/RegisterFormContainer";
 import HomeTopBlock from "components/HomeTopBlock";
+import HomeBottomBlock from "components/HomeBottomBlock";
 
 export default class Home extends Component {
   render() {
@@ -12,9 +12,9 @@ export default class Home extends Component {
       <div className="home-pege">
         <HomeTopBlock />
         <Container>
-          <RegisterFormContainer className="home-pege__register-form" />
           <p className="home-pege__text">It is Home Page. =)</p>
         </Container>
+        <HomeBottomBlock />
       </div>
     );
   }
