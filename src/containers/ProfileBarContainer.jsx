@@ -13,18 +13,22 @@ class ProfileBarContainer extends PureComponent {
 
   static propTypes = {
     userId: PropTypes.number,
+    user: PropTypes.object,
     isAuthenticated: PropTypes.bool,
+    isFetching: PropTypes.bool,
     logout: PropTypes.func
   };
 
   static defaultProps = {};
 
   render() {
-    const { userId, isAuthenticated, logout } = this.props;
+    const { user, userId, isAuthenticated, isFetching, logout } = this.props;
 
     return (
       <ProfileBar
         userId={userId}
+        user={user}
+        isFetching={isFetching}
         logout={logout}
         isAuthenticated={isAuthenticated}
       />
@@ -36,6 +40,8 @@ const mapStateToProps = (state, ownProps) => {
   return {
     ...ownProps,
     userId: state.auth.userId,
+    user: state.users.items[state.auth.userId],
+    isFetching: state.user.isFetching,
     isAuthenticated: state.auth.isAuthenticated
   };
 };

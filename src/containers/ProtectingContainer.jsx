@@ -18,20 +18,22 @@ export default function requireAuthentication(Component) {
     };
 
     render() {
-      return (
-        <div>
-          {this.checkAuth() === true && !this.props.isAuthenticating ? (
-            <Component {...this.props} />
-          ) : (
-            <Redirect
-              to={{
-                pathname: `/login`,
-                state: { from: this.props.location }
-              }}
-            />
-          )}
-        </div>
-      );
+      let element = "Loading...";
+
+      if (this.checkAuth() === true && !this.props.isAuthenticating) {
+        element = <Component {...this.props} />;
+      } else if (!localStorage.getItem("refresh_token")) {
+        element = (
+          <Redirect
+            to={{
+              pathname: `/login`,
+              state: { from: this.props.location }
+            }}
+          />
+        );
+      }
+
+      return element;
     }
   }
 

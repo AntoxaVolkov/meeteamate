@@ -49,7 +49,7 @@ export default class RegisterForm extends PureComponent {
             content="Одно из полей заполнено не верно"
           />
           <Form.Field>
-            <label>username</label>
+            <label>Username</label>
             <input
               className="login-form__input"
               name="username"

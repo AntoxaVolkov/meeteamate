@@ -1,35 +1,39 @@
 import { handleActions } from "redux-actions";
 
-import { userRequest, userSuccsess, userFailure } from "actions/actionsUser";
+import {
+  usersRequest,
+  usersSuccsess,
+  usersFailure
+} from "actions/actionsUsers";
 
 const initialState = {
-  id: null,
+  users: [],
   isFetching: false,
   didInvalidate: false
 };
 
 export default handleActions(
   {
-    [userRequest]: state => {
+    [usersRequest]: state => {
       return {
         ...state,
-        isFetching: true,
+        isLoading: true,
         didInvalidate: false
       };
     },
-    [userSuccsess]: (state, { payload: { id } }) => {
+    [usersSuccsess]: (state, { payload: { users } }) => {
       return {
         ...state,
-        id,
-        isFetching: false,
+        users: users,
+        isLoading: false,
         didInvalidate: false
       };
     },
-    [userFailure]: state => {
+    [usersFailure]: state => {
       return {
         ...state,
         didInvalidate: true,
-        isFetching: false
+        isLoading: false
       };
     }
   },

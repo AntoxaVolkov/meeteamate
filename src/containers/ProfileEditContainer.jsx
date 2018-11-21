@@ -1,15 +1,14 @@
 import React, { PureComponent, Fragment } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { Segment, Dimmer, Loader } from "semantic-ui-react";
+import { Loader } from "semantic-ui-react";
 
 import { getUser } from "actions/actionsUser";
 import { loadUsers } from "actions/actionsUsers";
-import Profile from "components/Profile";
+import ProfileEdit from "components/ProfileEdit";
 
-class ProfileConteiner extends PureComponent {
+class ProfileEditConteiner extends PureComponent {
   static propTypes = {
-    className: PropTypes.string,
     user: PropTypes.object,
     users: PropTypes.object,
     getUser: PropTypes.func,
@@ -23,29 +22,21 @@ class ProfileConteiner extends PureComponent {
   }
 
   loadUser = () => {
-    const { users, getUser, getUsers, currentUserId } = this.props;
-
-    if (!users[currentUserId]) {
-      getUser(currentUserId);
-    }
+    const { getUser, getUsers, currentUserId } = this.props;
+    getUsers();
+    getUser(currentUserId);
   };
 
   render() {
-    const { user, users, isFetching, currentUserId, className } = this.props;
+    const { user, users, isFetching, currentUserId } = this.props;
 
     const loader = (
       <Loader active inline="centered">
         Loading
       </Loader>
     );
-    console.log(user);
-    console.log(users);
-    return !isFetching && users[currentUserId] ? (
-      <Profile
-        className={className}
-        self={user.id === currentUserId}
-        user={users[currentUserId]}
-      />
+    return !isFetching && user.id ? (
+      <ProfileEdit user={users[currentUserId]} />
     ) : (
       loader
     );
@@ -74,4 +65,4 @@ function mapDispatchToProps(dispatch, props) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ProfileConteiner);
+)(ProfileEditConteiner);

@@ -17,16 +17,18 @@ export default class ProfileBar extends PureComponent {
 
   static propTypes = {
     userId: PropTypes.number,
+    user: PropTypes.object,
     isAuthenticated: PropTypes.bool,
+    isFetching: PropTypes.bool,
     logout: PropTypes.func
   };
 
   static defaultProps = {};
 
   render() {
-    const { userId, isAuthenticated, logout } = this.props;
+    const { user, userId, isAuthenticated, isFetching, logout } = this.props;
 
-    const loginBtn = (
+    let element = (
       <Menu.Item>
         <Link className="nav-link ui positive button" to="/login">
           Войти
@@ -34,22 +36,27 @@ export default class ProfileBar extends PureComponent {
       </Menu.Item>
     );
 
-    const profileDropdown = (
-      <Dropdown
-        trigger={
-          <div>
-            <Image src={avatar} avatar /> <span>Username</span>
-          </div>
-        }
-        item
-      >
-        <Dropdown.Menu>
-          <Dropdown.Item onClick={logout}>Выйти</Dropdown.Item>
-        </Dropdown.Menu>
-      </Dropdown>
-    );
-
-    const element = isAuthenticated ? profileDropdown : loginBtn;
+    if (isAuthenticated) {
+      if (user) {
+        element = (
+          <Dropdown
+            trigger={
+              <div>
+                <Image src={avatar} avatar />{" "}
+                <span>{user.username || "Username"}</span>
+              </div>
+            }
+            item
+          >
+            <Dropdown.Menu>
+              <Dropdown.Item onClick={logout}>Выйти</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+        );
+      } else {
+        element = "Loading...";
+      }
+    }
 
     return <Fragment>{element}</Fragment>;
   }

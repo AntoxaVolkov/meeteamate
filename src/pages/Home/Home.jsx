@@ -8,9 +8,9 @@ import RegisterFormContainer from "containers/RegisterFormContainer";
 export default class Home extends Component {
   render() {
     return (
-      <div className="home-pege">
+      <div className="home-page">
         <Container>
-          <RegisterFormContainer className="home-pege__register-form" />
+          <RegisterFormContainer className="home-page__register-form" />
           <p className="home-pege__text">It is Home Page. =)</p>
         </Container>
       </div>

@@ -4,13 +4,17 @@ import decode from "jwt-decode";
 import Users from "api/users";
 
 import { getChekedToken } from "actions/actionsAuth";
+import { addUsers } from "actions/actionsUsers";
 
-export const getUser = () => async dispatch => {
+export const getUser = uid => async dispatch => {
   dispatch(userRequest());
   try {
+    console.log(uid);
     let token = await dispatch(getChekedToken());
-    let { id, email } = await Users.getUser(token);
-    dispatch(userSuccsess({ user_id: id, email }));
+    let user = await Users.getUser(uid, token);
+    let { id } = user;
+    dispatch(addUsers({ users: { [id]: user } }));
+    dispatch(userSuccsess({ id }));
   } catch (error) {
     console.log(error);
     dispatch(userFailure(error));

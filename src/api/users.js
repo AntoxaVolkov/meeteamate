@@ -1,3 +1,4 @@
+import { normalize, schema } from "normalizr";
 import {
   baseUrlApi,
   checkHttpStatus,
@@ -5,6 +6,8 @@ import {
   publicFetch,
   castomFetch
 } from "./fetch";
+
+const user = new schema.Entity("users");
 
 function auth({ email, password }) {
   let body = encodeURI(`email=${email}&password=${password}`);
@@ -37,16 +40,25 @@ function register(userData) {
   return publicFetch("auth/register", "POST", userData);
 }
 
-function getUser(token) {
-  console.log(token + " gjkghjghj");
-  return castomFetch("", "GET", "", token);
+function getUser(uid, token) {
+  return castomFetch(`users/${uid}`, "GET", "", token);
+}
+
+async function getUsers({ page = "", token }) {
+  try {
+    let users = await castomFetch(`users?page=${page}`, "GET", "", token);
+    return Promise.resolve(normalize({ users }, { users: [user] }));
+  } catch (error) {
+    return Promise.reject(error);
+  }
 }
 
 const Users = {
   auth,
   refresh,
   register,
-  getUser
+  getUser,
+  getUsers
 };
 
 export default Users;

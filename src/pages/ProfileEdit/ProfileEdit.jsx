@@ -1,14 +1,14 @@
-import "./Profile.scss";
+import "./ProfileEdit.scss";
 
 import React, { PureComponent } from "react";
 import { Container } from "semantic-ui-react";
 
-import ProfileContainer from "containers/ProfileContainer";
+import ProfileEditContainer from "containers/ProfileEditContainer";
 
 import PropTypes from "prop-types";
 import classNames from "classnames";
 
-export default class Profile extends PureComponent {
+export default class ProfileEdit extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {};
@@ -22,9 +22,9 @@ export default class Profile extends PureComponent {
     const {} = this.props;
 
     return (
-      <div className="profile-page">
+      <div className="profile-edit-page">
         <Container>
-          <ProfileContainer className="profile-page__profile" />
+          <ProfileEditContainer className="profile-page__profile" />
         </Container>
       </div>
     );

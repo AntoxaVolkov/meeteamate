@@ -3,6 +3,7 @@ import decode from "jwt-decode";
 
 import Users from "api/users";
 import { getCheckedAccessToken } from "utils/auth";
+import { getUser } from "actions/actionsUser";
 import { isObject } from "util";
 
 export const authRequest = createAction("[Auth] Login  (request)");
@@ -23,6 +24,8 @@ export const login = ({ email, password, noremember }) => async dispatch => {
     let payload = decode(res["access"]);
 
     dispatch(authSuccess({ token: res["access"], userId: payload["user_id"] }));
+
+    getUser(payload["user_id"]);
 
     return Promise.resolve(res);
   } catch (error) {
@@ -56,6 +59,9 @@ export const reLogin = () => async dispatch => {
       dispatch(
         authSuccess({ token: res["access"], userId: payload["user_id"] })
       );
+
+      getUser(payload["user_id"]);
+
       return Promise.resolve(res);
     } catch (error) {
       sessionStorage.setItem("access_token", "");
@@ -87,6 +93,7 @@ export const getChekedToken = () => async dispatch => {
 export const loginUserSuccess = dispatch => token => {
   let payload = decode(res["access"]);
   dispatch(authSuccess({ token, userId: payload["user_id"] }));
+  getUser(payload["user_id"]);
   return { token, payload };
 };
 
