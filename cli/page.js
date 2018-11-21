@@ -4,11 +4,11 @@ const path = require("path");
 const createComponent = function(componentName, className) {
   fs.mkdirSync(path.resolve(__dirname, "..", "src", "pages", componentName));
 
-  const componentCode = `import './${componentName}.scss';
+  const componentCode = `import "./${componentName}.scss";
     
-import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
+import classNames from "classnames";
 
 export default class ${componentName} extends PureComponent {
   constructor(props) {
@@ -44,7 +44,7 @@ export default class ${componentName} extends PureComponent {
 
   fs.writeFileSync(
     path.resolve(__dirname, "..", "src", "pages", componentName, "index.js"),
-    `import ${componentName} from './${componentName}';
+    `import ${componentName} from "./${componentName}";
         
 export default ${componentName};`
   );
