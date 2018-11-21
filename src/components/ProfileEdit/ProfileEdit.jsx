@@ -29,7 +29,7 @@ export default class ProfileEdit extends Component {
               />
             </Form.Field>
             <Form.Field className="profile-edit-form__field">
-              <label className="profile-edit-form__label">Email</label>
+              <label className="profile-edit-form__label">рапрпар</label>
               <Input
                 type="email"
                 value={user.email}
@@ -46,8 +46,15 @@ export default class ProfileEdit extends Component {
               />
             </Form.Field>
             <Form.Field className="profile-edit-form__field">
-              <label className="profile-edit-form__label">Ваш город</label>
+              <label className="profile-edit-form__label">Город</label>
               <Input value={user.city} className="profile-edit-form__input" />
+            </Form.Field>
+            <Form.Field className="profile-edit-form__field">
+              <label className="profile-edit-form__label">Дата рождения</label>
+              <Input
+                value={user.birthday}
+                className="profile-edit-form__input"
+              />
             </Form.Field>
           </Segment>
         </Form>
