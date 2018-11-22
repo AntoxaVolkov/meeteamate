@@ -60,6 +60,8 @@ export function castomFetch(pathAPI, method, data, token) {
 
   conf["headers"] = headers;
 
+  console.log(conf);
+
   return fetch(`${baseUrlApi}${pathAPI}`, conf)
     .then(checkHttpStatus)
     .then(parseJSON);

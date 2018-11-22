@@ -53,12 +53,26 @@ async function getUsers({ page = "", token }) {
   }
 }
 
+async function updateUser({ data, token }) {
+  try {
+    let user = await castomFetch(`users/${data.id}`, "PUT", data, token);
+    if (user.id) {
+      return Promise.resolve(user);
+    } else {
+      return Promise.reject(user);
+    }
+  } catch (error) {
+    return Promise.reject(error);
+  }
+}
+
 const Users = {
   auth,
   refresh,
   register,
   getUser,
-  getUsers
+  getUsers,
+  updateUser
 };
 
 export default Users;

@@ -1,8 +1,22 @@
 .profile-edit-form {
+    max-width: 600px !important;
+    margin: 30px auto;
 
     &__field{
         display: flex;
         align-items: center;
-        justify-content: stretch;
+        margin-bottom: 1.2em;
+
+        &.--center{
+            justify-content: flex-end;
+        }
+    }
+
+    &__input{
+        flex: 1 0 auto;
+    }
+
+    &__label{
+        width: 200px;
     }
 }

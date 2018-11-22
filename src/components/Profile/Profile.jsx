@@ -10,7 +10,7 @@ export default class Profile extends Component {
   static propTypes = {
     user: PropTypes.object,
     className: PropTypes.string,
-    self: PropTypes.string
+    self: PropTypes.bool
   };
   render() {
     let { user, className } = this.props;
