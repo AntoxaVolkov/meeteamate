@@ -1,11 +1,12 @@
 .home-top-block {
   align-items: center;
-  background: url('../../assets/images/home-top-block-background.jpg') no-repeat center top;
+  background: url('../../assets/images/home-top-block-background.jpg') bottom center;
+  background-size: cover;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   padding: 180px 0;
-  min-height: 746px;
+  min-height: 100vh;
 
   &__title {
     color: white;

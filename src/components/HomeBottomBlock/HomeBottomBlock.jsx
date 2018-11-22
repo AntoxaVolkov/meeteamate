@@ -29,7 +29,7 @@ export default class HomeBottomBlock extends PureComponent {
             <br />
             прямо сейчас!
           </p>
-          <RegisterFormContainer />
+          <RegisterFormContainer className="home-botton-block__register" />
         </Container>
       </div>
     );

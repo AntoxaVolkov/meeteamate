@@ -1,6 +1,7 @@
 .home-bottom-block {
-  background: url('../../assets/images/home-bottom-block-background.jpg') no-repeat center;
-  height: 798px;
+  background: url('../../assets/images/home-bottom-block-background.jpg') bottom center;
+  background-size: cover;
+  min-height: 100vh;
   padding: 108px 0 0 0;
 }
 
@@ -8,4 +9,9 @@
   color: white;
   font-size: 2.8em;
   text-align: center;
+}
+
+.home-botton-block__register {
+  margin: 0 auto;
+  width: 465px;
 }
