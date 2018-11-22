@@ -1,2 +1,41 @@
 .profile {
+    &__avatar{
+    }
+
+    &__fullname{
+        font-size: 48px;
+        font-weight: 700;
+        line-height: 1.1em;
+        margin-bottom: 10px;
+    }
+
+    &__column{
+        text-align: center;
+    }
+
+    &__avatar{
+        margin: 0 auto 20px;
+    }
+
+    &__username{
+        font-size: 22px;
+        color: #7D7C7C;
+        margin-bottom: 20px;
+    }
+
+    &__city{
+        margin-bottom: 10px;
+    }
+
+    &__header{
+        position: relative;
+    }
+
+    &__segment{
+        position: absolute !important;
+        z-index: -1;
+        bottom: 0;
+        width: 100%;
+        top:90px;
+    }
 }
