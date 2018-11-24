@@ -49,9 +49,9 @@ export default class RegisterForm extends PureComponent {
             content="Одно из полей заполнено не верно"
           />
           <Form.Field>
-            <label>Username</label>
+            <label className="register-form__label">USERNAME:</label>
             <input
-              className="login-form__input"
+              className="register-form__input"
               name="username"
               onChange={this.handleChange}
               type="text"
@@ -59,9 +59,9 @@ export default class RegisterForm extends PureComponent {
             />
           </Form.Field>
           <Form.Field>
-            <label>Email</label>
+            <label className="register-form__label">EMAIL:</label>
             <input
-              className="login-form__input"
+              className="register-form__input"
               name="email"
               onChange={this.handleChange}
               type="email"
@@ -69,15 +69,19 @@ export default class RegisterForm extends PureComponent {
             />
           </Form.Field>
           <Form.Field>
-            <label>Пароль</label>
+            <label className="register-form__label">ПАРОЛЬ:</label>
             <input
-              className="login-form__input"
+              className="register-form__input"
               name="password"
               onChange={this.handleChange}
               type="password"
             />
           </Form.Field>
-          <Form.Button positive content="Зарегистрироваться" />
+          <Form.Button
+            positive
+            content="ЗАРЕГИСТРИРОВАТЬСЯ"
+            className="register-form__submit"
+          />
         </Form>
       </div>
     );
