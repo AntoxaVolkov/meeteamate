@@ -1,2 +1,39 @@
-.register-form {}
-      
+.field {
+  display: flex;
+  position: relative;
+}
+
+.ui.form .field .register-form__label {
+  color: white;
+  font-weight: 100;
+  left: 30px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.ui.form .field .register-form__input {
+  background-color: rgba(0, 0, 0, .45);
+  border-radius: 15px;
+  color: grey;
+  padding-left: 100px;
+}
+
+.ui.form .field .register-form__input:focus {
+  background-color: rgba(0, 0, 0, .45);
+  border-radius: 15px;
+  color: white;
+  padding-left: 100px;
+}
+
+.ui.form .register-form__submit .button {
+  background: linear-gradient(to right, rgba(2, 137, 178, .76), rgba(45, 211, 200, .77));
+  border-radius: 80px;
+  font-size: 16px;
+  font-weight: 100;
+  margin: 0 auto;
+}
+
+.ui.form .register-form__submit .button:hover {
+  background: rgba(2, 137, 178, .76);
+}
