@@ -3,8 +3,9 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Loader } from "semantic-ui-react";
 
-import { getUser, updateUser } from "actions/actionsUser";
+import { getUser, updateUser, updateUserAvatar } from "actions/actionsUser";
 import ProfileEdit from "components/ProfileEdit";
+import ProfileAvaEdit from "components/ProfileAvaEdit";
 
 class ProfileEditConteiner extends PureComponent {
   static propTypes = {
@@ -13,6 +14,7 @@ class ProfileEditConteiner extends PureComponent {
     getUser: PropTypes.func,
     isFetching: PropTypes.bool,
     updateUser: PropTypes.func,
+    updateUserAvatar: PropTypes.func,
     currentUserId: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
   };
 
@@ -24,6 +26,12 @@ class ProfileEditConteiner extends PureComponent {
     const { updateUser } = this.props;
     console.log(formdata);
     updateUser(formdata);
+  };
+
+  handleFileSubmit = formdata => {
+    const { updateUserAvatar } = this.props;
+    console.log(formdata);
+    updateUserAvatar(formdata);
   };
 
   loadUser = () => {
@@ -42,7 +50,14 @@ class ProfileEditConteiner extends PureComponent {
       </Loader>
     );
     return !isFetching && user.id ? (
-      <ProfileEdit user={users[currentUserId]} onSubmit={this.handleSubmit} />
+      <Fragment>
+        <ProfileAvaEdit
+          id={currentUserId}
+          picture={users[currentUserId].picture}
+          onSubmit={this.handleFileSubmit}
+        />
+        <ProfileEdit user={users[currentUserId]} onSubmit={this.handleSubmit} />
+      </Fragment>
     ) : (
       loader
     );
@@ -64,7 +79,8 @@ function mapDispatchToProps(dispatch, props) {
   return {
     ...props,
     getUser: id => dispatch(getUser(id)),
-    updateUser: data => dispatch(updateUser(data))
+    updateUser: data => dispatch(updateUser(data)),
+    updateUserAvatar: data => dispatch(updateUserAvatar(data))
   };
 }
 

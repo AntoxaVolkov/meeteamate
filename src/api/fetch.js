@@ -66,3 +66,28 @@ export function castomFetch(pathAPI, method, data, token) {
     .then(checkHttpStatus)
     .then(parseJSON);
 }
+
+export function fileFetch(pathAPI, method, data, token) {
+  const conf = { method: "POST" };
+
+  const headers = {};
+  if (token) {
+    headers["Authorization"] = `Bearer ${token}`;
+  }
+
+  if (method) {
+    conf["method"] = method;
+  }
+
+  if (data) {
+    conf["body"] = data;
+  }
+
+  conf["headers"] = headers;
+
+  console.log(conf);
+
+  return fetch(`${baseUrlApi}${pathAPI}`, conf)
+    .then(checkHttpStatus)
+    .then(parseJSON);
+}

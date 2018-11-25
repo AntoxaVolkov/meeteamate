@@ -3,6 +3,7 @@ import "./Profile.scss";
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Container, Image, Segment, Grid } from "semantic-ui-react";
+import Avatar from "components/Avatar";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 
@@ -24,12 +25,7 @@ export default class Profile extends Component {
             <Grid.Row>
               <Grid.Column width={4}>
                 <div className="profile__column">
-                  <Image
-                    className="profile__avatar"
-                    src={src}
-                    size="small"
-                    circular
-                  />
+                  <Avatar className="profile__avatar" url={src} />
                   <Link className="ui primary button" to="/profile/edit">
                     Редактировать
                   </Link>

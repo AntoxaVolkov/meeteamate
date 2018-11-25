@@ -4,7 +4,8 @@ import {
   checkHttpStatus,
   parseJSON,
   publicFetch,
-  castomFetch
+  castomFetch,
+  fileFetch
 } from "./fetch";
 
 const user = new schema.Entity("users");
@@ -66,13 +67,32 @@ async function updateUser({ data, token }) {
   }
 }
 
+async function updateUserAvatar({ data, token }) {
+  try {
+    let user = await fileFetch(
+      `users/avatar/${data.get("id")}`,
+      "PUT",
+      data,
+      token
+    );
+    if (user.id) {
+      return Promise.resolve(user);
+    } else {
+      return Promise.reject(user);
+    }
+  } catch (error) {
+    return Promise.reject(error);
+  }
+}
+
 const Users = {
   auth,
   refresh,
   register,
   getUser,
   getUsers,
-  updateUser
+  updateUser,
+  updateUserAvatar
 };
 
 export default Users;
