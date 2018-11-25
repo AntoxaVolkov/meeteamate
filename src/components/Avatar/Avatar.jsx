@@ -7,11 +7,19 @@ import classNames from "classnames";
 export default class Avatar extends PureComponent {
   static propTypes = {
     url: PropTypes.string,
-    className: PropTypes.string
+    className: PropTypes.string,
+    mini: PropTypes.bool
   };
+
+  static defaultProps = {
+    mini: false
+  };
+
   render() {
-    let { url, className } = this.props;
-    const avatarClass = classNames("avatar", className);
+    let { url, className, mini } = this.props;
+    const avatarClass = classNames("avatar", className, {
+      "--mini": mini
+    });
     return (
       <div className={avatarClass}>
         <div

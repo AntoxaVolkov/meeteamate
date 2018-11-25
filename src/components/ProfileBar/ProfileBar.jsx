@@ -5,7 +5,8 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 
 import { NavLink as Link } from "react-router-dom";
-import { Menu, Dropdown, Image } from "semantic-ui-react";
+import { Menu, Dropdown } from "semantic-ui-react";
+import Avatar from "components/Avatar";
 
 import avatar from "images/square-image.png";
 
@@ -38,11 +39,12 @@ export default class ProfileBar extends PureComponent {
 
     if (isAuthenticated) {
       if (user) {
+        let picture = "http://ror-jwt.herokuapp.com" + user.picture.thumb.url;
         element = (
           <Dropdown
             trigger={
-              <div>
-                <Image src={avatar} avatar />{" "}
+              <div className="profile-bar">
+                <Avatar mini className="profile-bar__avatar" url={picture} />{" "}
                 <span>{user.username || "Username"}</span>
               </div>
             }

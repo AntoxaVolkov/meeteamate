@@ -1,13 +1,26 @@
 .avatar {
+    position: relative;
     width: 156px;
     height: 156px;
-    display: flex;
+    display: inline-block;
     overflow: hidden;
     border-radius: 50%;
     background-image: linear-gradient(to right, rgba(2, 137, 178, .76), rgba(45, 211, 200, .77));
+    box-shadow: 2px 2px 13px 1px rgba(0, 0, 0, 0.3);
+
+    &.--mini{    
+        width: 28px;
+        height: 28px;
+    }
+    
+    &.--mini &__img{    
+        width: 26px;
+        height: 26px;
+    }
 
 
         &__img{
+            position: absolute;
             width: 150px;
             height: 150px;
             overflow: hidden;
@@ -15,6 +28,8 @@
             background-color: rgb(232, 252, 243);
             background-position: center;
             background-size: cover;
-            margin: auto;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
 }
