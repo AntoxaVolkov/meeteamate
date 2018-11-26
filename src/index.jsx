@@ -6,14 +6,17 @@ import ReactDom from "react-dom";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import Layout from "components/Layout";
-import CheckRefreshService from "containers/CheckRefreshService";
 
 import routes from "./routes";
 import store from "./store";
+import { checkAuth } from "utils/auth";
 
 class App extends Component {
+  componentDidMount() {
+    checkAuth(store);
+  }
+
   render() {
-    console.log("Render app");
     return (
       <Fragment>
         <Layout>
@@ -23,7 +26,6 @@ class App extends Component {
             ))}
           </Switch>
         </Layout>
-        <CheckRefreshService />
       </Fragment>
     );
   }
