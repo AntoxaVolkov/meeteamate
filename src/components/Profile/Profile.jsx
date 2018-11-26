@@ -7,6 +7,9 @@ import Avatar from "components/Avatar";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 
+import ShowSelf from "containers/ShowSelf";
+import ShowExceptSelf from "containers/ShowExceptSelf";
+
 export default class Profile extends Component {
   static propTypes = {
     user: PropTypes.object,
@@ -26,9 +29,12 @@ export default class Profile extends Component {
               <Grid.Column width={4}>
                 <div className="profile__column">
                   <Avatar className="profile__avatar" url={src} />
-                  <Link className="ui primary button" to="/profile/edit">
-                    Редактировать
-                  </Link>
+                  <ShowSelf uid={user.id}>
+                    <Link className="ui primary button" to="/profile/edit">
+                      Редактировать
+                    </Link>
+                  </ShowSelf>
+                  <ShowExceptSelf>Пригласить</ShowExceptSelf>
                 </div>
               </Grid.Column>
               <Grid.Column width={10}>

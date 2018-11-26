@@ -30,16 +30,6 @@ export default class Header extends Component {
                 Home
               </Link>
             </Menu.Item>
-            <Menu.Item>
-              <Link className="nav-link" to="/profile">
-                Profile
-              </Link>
-            </Menu.Item>
-            <Menu.Item>
-              <Link className="nav-link" to="/">
-                Link 2
-              </Link>
-            </Menu.Item>
             <Menu.Menu position="right" />
             <ProfoleBarContainer />
           </Menu>
