@@ -37,7 +37,6 @@ class UsersListContainer extends PureComponent {
 
   render() {
     const { users, isFetching, limit } = this.props;
-    console.log("object");
     return (
       <Fragment>
         <UsersList limit={limit} users={users} />

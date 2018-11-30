@@ -38,8 +38,6 @@ class ProfileConteiner extends PureComponent {
         Loading
       </Loader>
     );
-    console.log(user);
-    console.log(users);
     return !isFetching && users[currentUserId] ? (
       <Profile
         className={className}

@@ -9,7 +9,6 @@ const initialState = {
 export default handleActions(
   {
     [addUsers]: (state, { payload: { users } }) => {
-      console.log(users);
       return {
         items: { ...state.items, ...users }
       };
