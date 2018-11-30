@@ -2,23 +2,19 @@ import React, { PureComponent, Fragment } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
-import { loadListUsers } from "actions/actionsUsers";
+import { loadUsers } from "actions/actionsUsers";
+import UsersList from "components/UsersList";
 
-/*************************
- * Пример контейнера
- */
-
-const UsersList = () => <div />;
 const LoadMore = () => <div />;
 
 class UsersListContainer extends PureComponent {
+  //state = { page: 1 };
+
   static propTypes = {
-    limit: PropTypes.number,
     users: PropTypes.array,
+    limit: PropTypes.number,
     getListUsers: PropTypes.func,
-    isLoading: PropTypes.bool,
-    count: PropTypes.number,
-    currentPage: PropTypes.number
+    isFetching: PropTypes.bool
   };
 
   static defaultProps = {
@@ -40,20 +36,11 @@ class UsersListContainer extends PureComponent {
   };
 
   render() {
-    const { users, isLoading, limit, count, currentPage } = this.props;
-
+    const { users, isFetching, limit } = this.props;
+    console.log("object");
     return (
       <Fragment>
         <UsersList limit={limit} users={users} />
-        {isLoading && "Loading..."}
-        {limit &&
-        count &&
-        count > limit &&
-        currentPage < Math.ceil(count / limit) ? (
-          <LoadMore currentPage={currentPage} onIncrement={this.loadMore} />
-        ) : (
-          ""
-        )}
       </Fragment>
     );
   }
@@ -62,14 +49,15 @@ class UsersListContainer extends PureComponent {
 function mapStateToProps(state, ownProps) {
   return {
     ...ownProps,
-    ...state.users
+    ...state.usersShown,
+    users: state.usersShown.users.map(userId => state.users.items[userId])
   };
 }
 
 function mapDispatchToProps(dispatch, props) {
   return {
     ...props,
-    getListUsers: (limit, page) => dispatch(loadListUsers(limit, page))
+    getListUsers: page => dispatch(loadUsers(page))
   };
 }
 

@@ -12,6 +12,7 @@ export const loadUsers = page => async dispatch => {
     dispatch(usersRequest());
     let token = await dispatch(getChekedToken());
     let response = await Users.getUsers({ token });
+    console.log(response);
     dispatch(addUsers({ users: response.entities.users }));
     dispatch(usersSuccsess(response.result));
   } catch (error) {
