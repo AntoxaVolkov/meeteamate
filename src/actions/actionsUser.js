@@ -6,14 +6,14 @@ import Users from "api/users";
 import { getChekedToken } from "actions/actionsAuth";
 import { addUsers } from "actions/actionsUsers";
 
-export const userRequest = createAction("[User] Load User  (request)");
-export const userSuccsess = createAction("[User] Load User (succsess)");
-export const userFailure = createAction("[User] Load User (failure)");
+export const userRequest = createAction("[User] Get  (request)");
+export const userSuccsess = createAction("[User] Get (succsess)");
+export const userFailure = createAction("[User] Get (failure)");
+export const userClear = createAction("[User] Clear");
 
 export const getUser = uid => async dispatch => {
   dispatch(userRequest());
   try {
-    console.log(uid);
     let token = await dispatch(getChekedToken());
     let user = await Users.getUser(uid, token);
     let { id } = user;

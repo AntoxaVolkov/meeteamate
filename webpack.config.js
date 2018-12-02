@@ -20,7 +20,8 @@ module.exports = {
       reducers: path.resolve(__dirname, "src", "reducers"),
       images: path.resolve(__dirname, "src", "assets", "images"),
       utils: path.resolve(__dirname, "src", "utils"),
-      middleware: path.resolve(__dirname, "src", "middleware")
+      middleware: path.resolve(__dirname, "src", "middleware"),
+      configApp: path.resolve(__dirname, "src", "config")
     }
   },
   module: {

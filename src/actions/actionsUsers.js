@@ -11,10 +11,9 @@ export const loadUsers = (page, limit) => async dispatch => {
   try {
     dispatch(usersRequest());
     let token = await dispatch(getChekedToken());
-    let { data, count } = await Users.getUsers({ page, limit, token });
-    console.log(response);
-    dispatch(addUsers({ users: data.entities.users }));
-    dispatch(usersSuccsess({ usrs: data.result.users, count }));
+    let { entities, result } = await Users.getUsers({ page, limit, token });
+    dispatch(addUsers({ users: entities.users }));
+    dispatch(usersSuccsess(result));
   } catch (error) {
     console.log(error);
     dispatch(usersFailure(error));

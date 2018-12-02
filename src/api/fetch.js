@@ -1,4 +1,5 @@
-export const baseUrlApi = "http://ror-jwt.herokuapp.com/";
+import { confApi } from "configApp";
+export const baseUrlApi = confApi.baseUrl;
 
 export function checkHttpStatus(response) {
   if (response.status >= 200 && response.status < 300) {

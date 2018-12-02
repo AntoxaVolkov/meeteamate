@@ -3,6 +3,7 @@ import Profile from "pages/Profile";
 import ProfileEdit from "pages/ProfileEdit";
 import Login from "pages/Login";
 import Search from "pages/Search";
+import NotFound from "pages/NotFound";
 
 import ProtectingContainer from "containers/ProtectingContainer";
 import GuestOnlyContainer from "containers/GuestOnlyContainer";
@@ -36,5 +37,8 @@ export default [
     path: "/search",
     component: ProtectingContainer(Search),
     exact: true
+  },
+  {
+    component: NotFound
   }
 ];

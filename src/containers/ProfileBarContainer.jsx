@@ -39,7 +39,6 @@ class ProfileBarContainer extends PureComponent {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  console.log(state.users.items);
   return {
     ...ownProps,
     uid: state.auth.userId,

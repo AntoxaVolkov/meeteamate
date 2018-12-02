@@ -25,7 +25,8 @@ export default class Profile extends PureComponent {
       <div className="profile-page">
         <Container>
           <ProfileContainer
-            uid={match.params.id}
+            key={match.params.id}
+            uid={+match.params.id}
             className="profile-page__profile"
           />
         </Container>

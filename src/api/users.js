@@ -53,10 +53,7 @@ async function getUsers({ page = 1, limit = 10, token }) {
       "",
       token
     );
-    return Promise.resolve({
-      data: normalize(users, { users: [user] }),
-      count: users.count
-    });
+    return Promise.resolve(normalize(users, { users: [user] }));
   } catch (error) {
     return Promise.reject(error);
   }

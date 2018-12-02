@@ -1,6 +1,11 @@
 import { handleActions } from "redux-actions";
 
-import { userRequest, userSuccsess, userFailure } from "actions/actionsUser";
+import {
+  userRequest,
+  userSuccsess,
+  userFailure,
+  userClear
+} from "actions/actionsUser";
 
 const initialState = {
   id: null,
@@ -29,6 +34,13 @@ export default handleActions(
       return {
         ...state,
         didInvalidate: true,
+        isFetching: false
+      };
+    },
+    [userClear]: state => {
+      return {
+        id: null,
+        didInvalidate: false,
         isFetching: false
       };
     }

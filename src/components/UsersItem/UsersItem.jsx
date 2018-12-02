@@ -4,6 +4,7 @@ import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import { Link } from "react-router-dom";
+import { confApi } from "configApp";
 
 import Avatar from "components/Avatar";
 
@@ -15,7 +16,7 @@ export default class UsersItem extends PureComponent {
   render() {
     const { user } = this.props;
 
-    let src = `http://ror-jwt.herokuapp.com${user.picture.thumb.url}`;
+    let src = confApi.baseUrl + user.picture.thumb.url;
 
     return (
       <div className="users-item">

@@ -3,6 +3,7 @@ import "./ProfileBar.scss";
 import React, { PureComponent, Fragment } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
+import { confApi } from "configApp";
 
 import { NavLink as Link } from "react-router-dom";
 import { Menu, Dropdown, Loader } from "semantic-ui-react";
@@ -46,7 +47,7 @@ export default class ProfileBar extends PureComponent {
       element = loader;
     } else if (isAuthenticated) {
       if (user && user.id) {
-        let picture = "http://ror-jwt.herokuapp.com" + user.picture.thumb.url;
+        let picture = confApi.baseUrl + user.picture.thumb.url;
         element = (
           <Dropdown
             trigger={
