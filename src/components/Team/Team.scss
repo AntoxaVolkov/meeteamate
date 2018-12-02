@@ -1,0 +1,32 @@
+.team {
+  margin-top: 60px;
+  
+  &__column {
+    align-items: center;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 100%;
+  }
+
+  &__apply {
+    background-color: green;
+  }
+
+  &__title {
+    color: #444;
+    font-weight: bold;
+  }
+
+  &__short-description {
+    line-height: 1.8em;
+    margin-bottom: 25px;
+    text-align: justify;
+  }
+
+  &__tag {
+    color: #444;
+    margin-right: 30px;
+  }
+}
