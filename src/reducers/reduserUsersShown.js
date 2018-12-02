@@ -8,6 +8,7 @@ import {
 
 const initialState = {
   users: [],
+  count: 0,
   isFetching: false,
   didInvalidate: false
 };
@@ -21,10 +22,11 @@ export default handleActions(
         didInvalidate: false
       };
     },
-    [usersSuccsess]: (state, { payload: { users } }) => {
+    [usersSuccsess]: (state, { payload: { users, count } }) => {
       return {
         ...state,
-        users: users,
+        users,
+        count,
         isLoading: false,
         didInvalidate: false
       };

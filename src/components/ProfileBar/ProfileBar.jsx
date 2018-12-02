@@ -3,9 +3,10 @@ import "./ProfileBar.scss";
 import React, { PureComponent, Fragment } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
+import { confApi } from "configApp";
 
 import { NavLink as Link } from "react-router-dom";
-import { Menu, Dropdown } from "semantic-ui-react";
+import { Menu, Dropdown, Loader } from "semantic-ui-react";
 import Avatar from "components/Avatar";
 
 import avatar from "images/square-image.png";
@@ -17,17 +18,16 @@ export default class ProfileBar extends PureComponent {
   }
 
   static propTypes = {
-    userId: PropTypes.number,
     user: PropTypes.object,
     isAuthenticated: PropTypes.bool,
-    isFetching: PropTypes.bool,
+    isAuthenticating: PropTypes.bool,
     logout: PropTypes.func
   };
 
   static defaultProps = {};
 
   render() {
-    const { user, userId, isAuthenticated, isFetching, logout } = this.props;
+    const { user, isAuthenticated, isAuthenticating, logout } = this.props;
 
     let element = (
       <Menu.Item>
@@ -37,9 +37,17 @@ export default class ProfileBar extends PureComponent {
       </Menu.Item>
     );
 
-    if (isAuthenticated) {
-      if (user) {
-        let picture = "http://ror-jwt.herokuapp.com" + user.picture.thumb.url;
+    const loader = (
+      <Menu.Item>
+        <Loader active inline="centered" size="small" />
+      </Menu.Item>
+    );
+
+    if (isAuthenticating) {
+      element = loader;
+    } else if (isAuthenticated) {
+      if (user && user.id) {
+        let picture = confApi.baseUrl + user.picture.thumb.url;
         element = (
           <Dropdown
             trigger={
@@ -61,7 +69,7 @@ export default class ProfileBar extends PureComponent {
           </Dropdown>
         );
       } else {
-        element = "Loading...";
+        element = loader;
       }
     }
 

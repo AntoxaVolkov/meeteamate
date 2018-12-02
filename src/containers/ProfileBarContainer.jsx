@@ -2,33 +2,35 @@ import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logout } from "actions/actionsAuth";
+import { getUser } from "actions/actionsUser";
 
 import ProfileBar from "components/ProfileBar";
 
 class ProfileBarContainer extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {};
+  componentDidUpdate() {
+    const { user, uid, loadUser } = this.props;
+    if (!user && uid) {
+      loadUser(uid);
+    }
   }
 
   static propTypes = {
-    userId: PropTypes.number,
+    uid: PropTypes.number,
+    loadUser: PropTypes.func,
     user: PropTypes.object,
     isAuthenticated: PropTypes.bool,
-    isFetching: PropTypes.bool,
+    isAuthenticating: PropTypes.bool,
     logout: PropTypes.func
   };
 
   static defaultProps = {};
 
   render() {
-    const { user, userId, isAuthenticated, isFetching, logout } = this.props;
-
+    const { user, isAuthenticated, isAuthenticating, logout } = this.props;
     return (
       <ProfileBar
-        userId={userId}
         user={user}
-        isFetching={isFetching}
+        isAuthenticating={isAuthenticating}
         logout={logout}
         isAuthenticated={isAuthenticated}
       />
@@ -39,9 +41,9 @@ class ProfileBarContainer extends PureComponent {
 const mapStateToProps = (state, ownProps) => {
   return {
     ...ownProps,
-    userId: state.auth.userId,
+    uid: state.auth.userId,
     user: state.users.items[state.auth.userId],
-    isFetching: state.user.isFetching,
+    isAuthenticating: state.auth.isAuthenticating,
     isAuthenticated: state.auth.isAuthenticated
   };
 };
@@ -49,7 +51,8 @@ const mapStateToProps = (state, ownProps) => {
 function mapDispatchToProps(dispatch, props) {
   return {
     ...props,
-    logout: () => logout(dispatch)()
+    logout: () => logout(dispatch)(),
+    loadUser: uid => dispatch(getUser(uid))
   };
 }
 

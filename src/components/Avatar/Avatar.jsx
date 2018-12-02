@@ -8,17 +8,20 @@ export default class Avatar extends PureComponent {
   static propTypes = {
     url: PropTypes.string,
     className: PropTypes.string,
-    mini: PropTypes.bool
+    mini: PropTypes.bool,
+    medium: PropTypes.bool
   };
 
   static defaultProps = {
-    mini: false
+    mini: false,
+    medium: false
   };
 
   render() {
-    let { url, className, mini } = this.props;
+    let { url, className, mini, medium } = this.props;
     const avatarClass = classNames("avatar", className, {
-      "--mini": mini
+      "--mini": mini,
+      "--medium": medium
     });
     return (
       <div className={avatarClass}>

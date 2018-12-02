@@ -6,6 +6,8 @@ import classNames from "classnames";
 import Avatar from "components/Avatar";
 import { Segment } from "semantic-ui-react";
 
+import { confApi } from "configApp";
+
 export default class ProfileAvaEdit extends PureComponent {
   constructor(props) {
     super(props);
@@ -25,7 +27,7 @@ export default class ProfileAvaEdit extends PureComponent {
 
   componentDidMount() {
     let { picture } = this.props;
-    let previewUrl = `http://ror-jwt.herokuapp.com${picture.thumb.url}`;
+    let previewUrl = confApi.baseUrl + picture.thumb.url;
     this.setState({ previewUrl });
   }
 

@@ -7,13 +7,13 @@ export const usersRequest = createAction("[Users] Load  (request)");
 export const usersSuccsess = createAction("[Users] Load (succsess)");
 export const usersFailure = createAction("[Users] Load (failure)");
 
-export const loadUsers = page => async dispatch => {
+export const loadUsers = (page, limit) => async dispatch => {
   try {
     dispatch(usersRequest());
     let token = await dispatch(getChekedToken());
-    let response = await Users.getUsers({ token });
-    dispatch(addUsers({ users: response.entities.users }));
-    dispatch(usersSuccsess(response.result));
+    let { entities, result } = await Users.getUsers({ page, limit, token });
+    dispatch(addUsers({ users: entities.users }));
+    dispatch(usersSuccsess(result));
   } catch (error) {
     console.log(error);
     dispatch(usersFailure(error));

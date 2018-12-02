@@ -14,17 +14,21 @@ export default class Profile extends PureComponent {
     this.state = {};
   }
 
-  static propTypes = {};
+  static propTypes = { match: PropTypes.object };
 
   static defaultProps = {};
 
   render() {
-    const {} = this.props;
+    const { match } = this.props;
 
     return (
       <div className="profile-page">
         <Container>
-          <ProfileContainer className="profile-page__profile" />
+          <ProfileContainer
+            key={match.params.id}
+            uid={+match.params.id}
+            className="profile-page__profile"
+          />
         </Container>
       </div>
     );

@@ -2,6 +2,8 @@ import Home from "pages/Home";
 import Profile from "pages/Profile";
 import ProfileEdit from "pages/ProfileEdit";
 import Login from "pages/Login";
+import Search from "pages/Search";
+import NotFound from "pages/NotFound";
 import Team from "pages/Team";
 import TeamEdit from "pages/TeamEdit";
 
@@ -24,6 +26,11 @@ export default [
     exact: true
   },
   {
+    path: "/profile/:id",
+    component: ProtectingContainer(Profile),
+    exact: true
+  },
+  {
     path: "/profile",
     component: ProtectingContainer(Profile),
     exact: true
@@ -37,5 +44,13 @@ export default [
     path: "/team/edit",
     component: /* TeamleadOnlyContainer */ TeamEdit,
     exact: true
+  },
+  {
+    path: "/search",
+    component: ProtectingContainer(Search),
+    exact: true
+  },
+  {
+    component: NotFound
   }
 ];

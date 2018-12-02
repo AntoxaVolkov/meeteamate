@@ -2,10 +2,11 @@ import "./Profile.scss";
 
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Container, Image, Segment, Grid } from "semantic-ui-react";
+import { Container, Image, Segment, Grid, Icon } from "semantic-ui-react";
 import Avatar from "components/Avatar";
 import PropTypes from "prop-types";
 import classNames from "classnames";
+import { confApi } from "configApp";
 
 import ShowSelf from "containers/ShowSelf";
 import ShowExceptSelf from "containers/ShowExceptSelf";
@@ -20,7 +21,7 @@ export default class Profile extends Component {
     let { user, className } = this.props;
     const profileClass = classNames("profile", className);
 
-    let src = `http://ror-jwt.herokuapp.com${user.picture.thumb.url}`;
+    let src = confApi.baseUrl + user.picture.thumb.url;
     return (
       <div className={profileClass}>
         <Container className="profile__header">
@@ -40,7 +41,10 @@ export default class Profile extends Component {
               <Grid.Column width={10}>
                 <div className="profile__fullname">{user.fullname}</div>
                 <div className="profile__username">{user.username}</div>
-                <div className="profile__city">{user.city}</div>
+                <div className="profile__city">
+                  <Icon name="map marker alternate" />
+                  {user.city}
+                </div>
                 <div className="profile__about">{user.about}</div>
               </Grid.Column>
             </Grid.Row>

@@ -8,6 +8,8 @@ import classNames from "classnames";
 import PropTypes from "prop-types";
 
 import ProfoleBarContainer from "containers/ProfileBarContainer";
+import ShowUser from "containers/ShowUser";
+import ShowGuest from "containers/ShowGuest";
 
 export default class Header extends Component {
   static propTypes = {};
@@ -24,12 +26,21 @@ export default class Header extends Component {
       <header className={headerClass}>
         <Container>
           <Menu>
-            <Menu.Item header>Our Company</Menu.Item>
-            <Menu.Item>
-              <Link className="nav-link" to="/">
-                Home
-              </Link>
-            </Menu.Item>
+            <Menu.Item header>meeTEAMate</Menu.Item>
+            <ShowGuest>
+              <Menu.Item>
+                <Link className="nav-link" to="/">
+                  Home
+                </Link>
+              </Menu.Item>
+            </ShowGuest>
+            <ShowUser>
+              <Menu.Item>
+                <Link className="nav-link" to="/search">
+                  Найти
+                </Link>
+              </Menu.Item>
+            </ShowUser>
             <Menu.Menu position="right" />
             <ProfoleBarContainer />
           </Menu>
