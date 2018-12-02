@@ -49,7 +49,7 @@ class ProfileEditConteiner extends PureComponent {
         Loading
       </Loader>
     );
-    return !isFetching && user.id ? (
+    return !isFetching && users[currentUserId].id ? (
       <Fragment>
         <ProfileAvaEdit
           id={currentUserId}
