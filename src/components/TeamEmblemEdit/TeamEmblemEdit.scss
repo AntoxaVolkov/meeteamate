@@ -1,0 +1,47 @@
+.team-emblem-edit {
+  max-width: 600px !important;
+  margin: 30px auto !important;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__save-emblem{
+      display: none !important;
+      &--active{
+          display: inline-block !important;
+      }
+  }
+
+  &__label{
+      position: relative;
+      display: block;
+      width:156px;
+      height: 156px;
+      cursor: pointer;
+      &:hover{
+          &:after{
+              display: block;
+              position: absolute;
+              top: 0px;
+              bottom: 0px;
+              left: 0px;
+              right: 0px;
+              border-radius: 10px;
+              background-color: rgba(#fff, 0.8);
+              font-weight: 700;
+              font-size: 18px;
+              content: "Изменить";
+              text-align: center;
+              line-height: 156px;
+              z-index: 10;
+
+          }
+      }
+  }
+
+  &__input-file{
+      position: relative;
+      opacity: 0;
+      z-index: -1;
+  }
+}

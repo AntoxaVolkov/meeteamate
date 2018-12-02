@@ -1,4 +1,4 @@
-import React, { PureComponent } from "react";
+import React, { PureComponent, Fragment } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
@@ -17,7 +17,11 @@ class TeamEditContainer extends PureComponent {
   render() {
     const {} = this.props;
 
-    return <TeamEdit />;
+    return (
+      <Fragment>
+        <TeamEdit />
+      </Fragment>
+    );
   }
 }
 

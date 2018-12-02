@@ -11,18 +11,22 @@ export default class Emblem extends PureComponent {
   }
 
   static propTypes = {
+    url: PropTypes.string,
     className: PropTypes.string
   };
 
   static defaultProps = {};
 
   render() {
-    let { className } = this.props;
+    let { url, className } = this.props;
     const emblemClass = classNames("emblem", className);
 
     return (
       <div className={emblemClass}>
-        <div className="emblem__img" />
+        <div
+          className="emblem__img"
+          style={{ backgroundImage: `url('${url}')` }}
+        />
       </div>
     );
   }

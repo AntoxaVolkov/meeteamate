@@ -1,3 +1,7 @@
+.team-edit {
+    margin: 30px 0;
+}
+
 .team-edit-form {
   max-width: 600px !important;
   margin: 30px auto;
@@ -8,7 +12,7 @@
       margin-bottom: 1.2em;
 
       &.--center{
-          justify-content: flex-end;
+          justify-content: center;
       }
   }
 
