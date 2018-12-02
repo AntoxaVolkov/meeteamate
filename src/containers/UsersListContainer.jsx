@@ -25,10 +25,10 @@ class UsersListContainer extends PureComponent {
     this.loadUsers();
   }
 
-  loadUsers = (currentPage = 1) => {
+  loadUsers = (page = 1) => {
     const { limit, getListUsers } = this.props;
 
-    getListUsers(limit, currentPage);
+    getListUsers({ page, limit });
   };
 
   loadMore = nextPage => {

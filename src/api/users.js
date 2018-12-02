@@ -45,10 +45,18 @@ function getUser(uid, token) {
   return castomFetch(`users/${uid}`, "GET", "", token);
 }
 
-async function getUsers({ page = "", token }) {
+async function getUsers({ page = 1, limit = 10, token }) {
   try {
-    let users = await castomFetch(`users?page=${page}`, "GET", "", token);
-    return Promise.resolve(normalize({ users }, { users: [user] }));
+    let users = await castomFetch(
+      `users?page=${page}&limit=${limit}`,
+      "GET",
+      "",
+      token
+    );
+    return Promise.resolve({
+      data: normalize(users, { users: [user] }),
+      count: users.count
+    });
   } catch (error) {
     return Promise.reject(error);
   }
