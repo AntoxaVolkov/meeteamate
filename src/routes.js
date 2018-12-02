@@ -51,6 +51,10 @@ export default [
     exact: true
   },
   {
+    path: "/search/users",
+    component: ProtectingContainer(Search)
+  },
+  {
     component: NotFound
   }
 ];
