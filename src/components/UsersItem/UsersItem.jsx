@@ -3,6 +3,7 @@ import "./UsersItem.scss";
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
+import { Link } from "react-router-dom";
 
 import Avatar from "components/Avatar";
 
@@ -20,7 +21,9 @@ export default class UsersItem extends PureComponent {
       <div className="users-item">
         <Avatar url={src} medium />
         <div className="users-item__info">
-          <p className="users-item__name">{user.fullname || user.username}</p>
+          <Link to={`/profile/${user.id}`}>
+            <p className="users-item__name">{user.fullname || user.username}</p>
+          </Link>
           <p className="users-item__username">
             {user.fullname && user.username}
           </p>

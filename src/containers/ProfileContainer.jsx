@@ -14,36 +14,31 @@ class ProfileConteiner extends PureComponent {
     users: PropTypes.object,
     getUser: PropTypes.func,
     isFetching: PropTypes.bool,
-    getUsers: PropTypes.func,
-    currentUserId: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+    uid: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
   };
 
-  componentDidMount() {
+  componentDidUpdate() {
     this.loadUser();
   }
 
   loadUser = () => {
-    const { users, getUser, getUsers, currentUserId } = this.props;
-
-    if (!users[currentUserId]) {
-      getUser(currentUserId);
+    const { users, getUser, uid } = this.props;
+    console.log(uid);
+    if (uid && !users[uid]) {
+      getUser(uid);
     }
   };
 
   render() {
-    const { user, users, isFetching, currentUserId, className } = this.props;
+    const { user, users, isFetching, uid, className } = this.props;
 
     const loader = (
       <Loader active inline="centered">
         Loading
       </Loader>
     );
-    return !isFetching && users[currentUserId] ? (
-      <Profile
-        className={className}
-        self={user.id === currentUserId}
-        user={users[currentUserId]}
-      />
+    return !isFetching && users[uid] ? (
+      <Profile className={className} self={user.id === uid} user={users[uid]} />
     ) : (
       loader
     );
@@ -54,7 +49,7 @@ function mapStateToProps(state, ownProps) {
   return {
     ...ownProps,
     ...state.user,
-    currentUserId: state.auth.userId,
+    uid: ownProps.uid || state.auth.userId,
     isFetching: state.user.isFetching,
     users: state.users.items,
     user: state.user

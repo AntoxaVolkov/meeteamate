@@ -23,6 +23,11 @@ export default [
     exact: true
   },
   {
+    path: "/profile/:id",
+    component: ProtectingContainer(Profile),
+    exact: true
+  },
+  {
     path: "/profile",
     component: ProtectingContainer(Profile),
     exact: true
