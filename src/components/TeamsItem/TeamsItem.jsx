@@ -20,7 +20,9 @@ export default class TeamsItem extends PureComponent {
 
     return (
       <div className="teams-item">
-        <Avatar url={src} medium />
+        <div className="teams-item__avatar">
+          <Avatar url={src} medium />
+        </div>
         <div className="teams-item__info">
           <Link to={`/team/${team.id}`}>
             <p className="teams-item__name">{team.title}</p>

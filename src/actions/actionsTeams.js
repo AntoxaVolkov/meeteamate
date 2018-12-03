@@ -61,4 +61,20 @@ export const updateTeam = data => async dispatch => {
   }
 };
 
+export const createTeam = data => async dispatch => {
+  dispatch(teamRequest());
+  try {
+    console.log(data);
+    let token = await dispatch(getChekedToken());
+    let team = await Teams.createTeam({ data, token });
+    console.log(team);
+    let { id } = team;
+    dispatch(addTeams({ teams: { [id]: team } }));
+    dispatch(teamSuccsess({ id }));
+  } catch (error) {
+    console.log(error);
+    dispatch(teamFailure(error));
+  }
+};
+
 export const addTeams = createAction("[Teams] Add Teams");

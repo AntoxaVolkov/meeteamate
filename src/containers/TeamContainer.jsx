@@ -52,8 +52,9 @@ class TeamContainer extends PureComponent {
     const { id, teams, isFetching, className, tid } = this.props;
 
     console.log(id);
+    console.log(teams[id]);
 
-    return <Team className={className} team={teams[id]} />;
+    return teams[id] ? <Team className={className} team={teams[id]} /> : "";
   }
 }
 
@@ -72,7 +73,6 @@ function mapDispatchToProps(dispatch, props) {
   return {
     ...props,
     getTeam: id => dispatch(getTeam(id)),
-    loadTeams: () => dispatch(getTeams()),
     changeTeam: id => dispatch(teamSuccsess(id)),
     teamClear: () => dispatch(teamClear())
   };

@@ -1,5 +1,5 @@
 import { normalize, schema } from "normalizr";
-import { publicFetch, castomFetch, fileFetch } from "./fetch";
+import { publicFetch, castomFetch, formDataFetch } from "./fetch";
 
 const team = new schema.Entity("teams");
 
@@ -23,7 +23,26 @@ async function getTeams({ page = 1, limit = 10, token }) {
 
 async function updateTeam({ data, token }) {
   try {
-    let team = await castomFetch(`teams/${data.id}`, "PUT", data, token);
+    let team = await formDataFetch(
+      `teams/${data.tid}`,
+      "PUT",
+      data.formdata,
+      token
+    );
+    if (team.id) {
+      return Promise.resolve(team);
+    } else {
+      return Promise.reject(team);
+    }
+  } catch (error) {
+    return Promise.reject(error);
+  }
+}
+
+async function createTeam({ data, token }) {
+  console.log(data);
+  try {
+    let team = await formDataFetch(`teams`, "POST", data, token);
     if (team.id) {
       return Promise.resolve(team);
     } else {
@@ -55,7 +74,8 @@ async function updateUserAvatar({ data, token }) {
 const Teams = {
   getTeam,
   getTeams,
-  updateTeam
+  updateTeam,
+  createTeam
   //updateTeamAvatar
 };
 

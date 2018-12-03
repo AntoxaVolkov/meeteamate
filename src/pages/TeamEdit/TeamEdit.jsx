@@ -8,22 +8,18 @@ import classNames from "classnames";
 import TeamEditContainer from "containers/TeamEditContainer";
 
 export default class TeamEdit extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
-  static propTypes = {};
-
-  static defaultProps = {};
+  static propTypes = { match: PropTypes.object };
 
   render() {
-    const {} = this.props;
+    const { match } = this.props;
 
     return (
       <div className="team-edit-page">
         <Container>
-          <TeamEditContainer className="team-page__team" />
+          <TeamEditContainer
+            tid={+match.params.id}
+            className="team-page__team"
+          />
         </Container>
       </div>
     );
