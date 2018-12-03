@@ -1,7 +1,7 @@
 import { normalize, schema } from "normalizr";
 import { publicFetch, castomFetch, fileFetch } from "./fetch";
 
-const team = new schema.Entity("tems"); // Исправить на teams
+const team = new schema.Entity("teams");
 
 function getTeam(tid, token) {
   return castomFetch(`teams/${tid}`, "GET", "", token);
@@ -16,7 +16,7 @@ async function getTeams({ page = 1, limit = 10, token }) {
       token
     );
     console.log(teams);
-    return Promise.resolve(normalize(teams, { tems: [team] })); // Исправить на teams
+    return Promise.resolve(normalize(teams, { teams: [team] }));
   } catch (error) {
     return Promise.reject(error);
   }

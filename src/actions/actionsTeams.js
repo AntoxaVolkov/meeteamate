@@ -13,8 +13,8 @@ export const getTeams = ({ page, limit }) => async dispatch => {
     let token = await dispatch(getChekedToken());
     let { entities, result } = await Teams.getTeams({ page, limit, token });
     console.log(entities, result);
-    dispatch(addTeams({ teams: entities.tems })); // Исправить на teams
-    dispatch(teamsSuccsess({ count: result.count, teams: result.tems })); // Исправить на teams
+    dispatch(addTeams({ teams: entities.teams }));
+    dispatch(teamsSuccsess({ count: result.count, teams: result.teams }));
   } catch (error) {
     console.log(error);
     dispatch(teamsFailure(error));
