@@ -14,17 +14,17 @@ export default class Team extends PureComponent {
     this.state = {};
   }
 
-  static propTypes = {};
+  static propTypes = { match: PropTypes.object };
 
   static defaultProps = {};
 
   render() {
-    const {} = this.props;
+    const { match } = this.props;
 
     return (
       <div className="team-page">
         <Container>
-          <TeamContainer className="team-page__team" />
+          <TeamContainer tid={+match.params.id} className="team-page__team" />
         </Container>
       </div>
     );

@@ -15,7 +15,6 @@ async function getTeams({ page = 1, limit = 10, token }) {
       "",
       token
     );
-    console.log(teams);
     return Promise.resolve(normalize(teams, { teams: [team] }));
   } catch (error) {
     return Promise.reject(error);

@@ -1,27 +1,21 @@
 import "./Team.scss";
 
 import React, { PureComponent } from "react";
+import { Link } from "react-router-dom";
+import { Container, Segment, Grid, Button } from "semantic-ui-react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import { Link } from "react-router-dom";
+import { confApi } from "configApp";
 
-import { Container, Segment, Grid, Button } from "semantic-ui-react";
 import Emblem from "components/Emblem";
 
 export default class Team extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
   static propTypes = {
+    team: PropTypes.object,
     className: PropTypes.string
   };
-
-  static defaultProps = {};
-
   render() {
-    const { className } = this.props;
+    let { team, className } = this.props;
     const teamClass = classNames("team", className);
 
     return (

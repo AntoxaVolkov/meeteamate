@@ -33,7 +33,7 @@ export const getTeam = uid => async dispatch => {
     let token = await dispatch(getChekedToken());
     let team = await Teams.getTeam(uid, token);
     let { id } = team;
-    dispatch(addTeam({ teams: { [id]: team } }));
+    dispatch(addTeams({ teams: { [id]: team } }));
     dispatch(teamSuccsess({ id }));
   } catch (error) {
     console.log(error);

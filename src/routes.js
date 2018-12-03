@@ -36,7 +36,7 @@ export default [
     exact: true
   },
   {
-    path: "/team",
+    path: "/team/:id",
     component: Team,
     exact: true
   },
