@@ -15,7 +15,7 @@ export default class TeamEmblemEdit extends PureComponent {
     };
   }
 
-  static propTypes = {};
+  static propTypes = { onChange: PropTypes.func.isRequired };
 
   static defaultProps = {};
 
@@ -30,6 +30,8 @@ export default class TeamEmblemEdit extends PureComponent {
         image: file,
         previewUrl: reader.result
       });
+
+      this.props.onChange(file);
     };
 
     reader.readAsDataURL(file);

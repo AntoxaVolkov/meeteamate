@@ -6,6 +6,7 @@ import Search from "pages/Search";
 import NotFound from "pages/NotFound";
 import Team from "pages/Team";
 import TeamEdit from "pages/TeamEdit";
+import TeamAdd from "pages/TeamAdd";
 
 import ProtectingContainer from "containers/ProtectingContainer";
 import GuestOnlyContainer from "containers/GuestOnlyContainer";
@@ -36,13 +37,18 @@ export default [
     exact: true
   },
   {
-    path: "/team",
-    component: Team,
+    path: "/team/edit/:id",
+    component: /* TeamleadOnlyContainer */ TeamEdit,
     exact: true
   },
   {
-    path: "/team/edit",
-    component: /* TeamleadOnlyContainer */ TeamEdit,
+    path: "/team/add",
+    component: /* TeamleadOnlyContainer */ TeamAdd,
+    exact: true
+  },
+  {
+    path: "/team/:id",
+    component: Team,
     exact: true
   },
   {

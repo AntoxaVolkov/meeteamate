@@ -40,10 +40,10 @@ export function publicFetch(pathAPI, method, data) {
     .then(parseJSON);
 }
 
-export function castomFetch(pathAPI, method, data, token) {
+export function castomFetch(pathAPI, method, data, token, custonHeader) {
   const conf = { method: "GET" };
 
-  const headers = {
+  const headers = custonHeader || {
     Accept: "application/json",
     "Content-Type": "application/json"
   };
@@ -57,6 +57,32 @@ export function castomFetch(pathAPI, method, data, token) {
 
   if (data) {
     conf["body"] = JSON.stringify(data);
+  }
+
+  conf["headers"] = headers;
+
+  console.log(conf);
+
+  return fetch(`${baseUrlApi}${pathAPI}`, conf)
+    .then(checkHttpStatus)
+    .then(parseJSON);
+}
+
+export function formDataFetch(pathAPI, method, data, token) {
+  const conf = { method: "GET" };
+
+  const headers = {};
+
+  if (token) {
+    headers["Authorization"] = `Bearer ${token}`;
+  }
+
+  if (method) {
+    conf["method"] = method;
+  }
+
+  if (data) {
+    conf["body"] = data;
   }
 
   conf["headers"] = headers;

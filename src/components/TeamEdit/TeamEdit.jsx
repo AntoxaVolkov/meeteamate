@@ -19,22 +19,47 @@ export default class TeamEdit extends PureComponent {
     super(props);
     this.state = {
       title: "",
-      short_description: "",
-      full_description: "",
-      tags: ""
+      summary: "",
+      body: "",
+      picture: ""
     };
   }
 
-  static propTypes = {};
+  static propTypes = {
+    team: PropTypes.object,
+    onSubmit: PropTypes.func.isRequired
+  };
 
-  static defaultProps = {};
+  //static defaultProps = { team: false };
+
+  componentDidMount() {
+    const { team } = this.props;
+
+    if (team) {
+      let { title, summary, body } = team;
+      this.setState({ title, summary, body });
+    }
+  }
 
   handleChange = ({ target: { name, value } }) => {
     this.setState({ [name]: value });
   };
 
+  handleSubmit = () => {
+    const formdata = new FormData();
+    Object.keys(this.state).forEach(key => {
+      formdata.append(key, this.state[key]);
+    });
+
+    this.props.onSubmit(formdata);
+  };
+
+  handleChangeEmblem = file => {
+    this.setState({ picture: file });
+  };
+
   render() {
-    const {} = this.props;
+    //const {onSubmit} = this.props;
 
     return (
       <div className="team-edit">
@@ -59,8 +84,8 @@ export default class TeamEdit extends PureComponent {
                       Краткое описание
                     </label>
                     <Form.TextArea
-                      name="short_description"
-                      value={this.state.short_description}
+                      name="summary"
+                      value={this.state.summary}
                       onChange={this.handleChange}
                       className="team-edit-form__input"
                       placeholder="Кратко опишите команду..."
@@ -71,8 +96,8 @@ export default class TeamEdit extends PureComponent {
                       Полное описание
                     </label>
                     <Form.TextArea
-                      name="full_description"
-                      value={this.state.full_description}
+                      name="body"
+                      value={this.state.body}
                       onChange={this.handleChange}
                       className="team-edit-form__input"
                       placeholder="Дайте полное описание команды..."
@@ -82,8 +107,6 @@ export default class TeamEdit extends PureComponent {
                     <label className="team-edit-form__label">Тэги</label>
                     <Input
                       type="text"
-                      value={this.state.tags}
-                      onChange={this.handleChange}
                       name="tags"
                       className="team-edit-form__input"
                       placeholder="Введите тэги через пробел"
@@ -92,12 +115,14 @@ export default class TeamEdit extends PureComponent {
                 </Form>
               </Grid.Column>
               <Grid.Column width={4}>
-                <TeamEmblemEdit />
+                <TeamEmblemEdit onChange={this.handleChangeEmblem} />
               </Grid.Column>
             </Grid.Row>
           </Grid>
           <div className="team-edit-form__field --center">
-            <Button primary>Сохранить</Button>
+            <Button onClick={this.handleSubmit} primary>
+              Сохранить
+            </Button>
           </div>
         </Segment>
       </div>

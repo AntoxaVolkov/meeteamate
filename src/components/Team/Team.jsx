@@ -1,29 +1,23 @@
 import "./Team.scss";
 
 import React, { PureComponent } from "react";
+import { Link } from "react-router-dom";
+import { Container, Segment, Grid, Button } from "semantic-ui-react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import { Link } from "react-router-dom";
+import { confApi } from "configApp";
 
-import { Container, Segment, Grid, Button } from "semantic-ui-react";
 import Emblem from "components/Emblem";
 
 export default class Team extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
   static propTypes = {
+    team: PropTypes.object,
     className: PropTypes.string
   };
-
-  static defaultProps = {};
-
   render() {
-    const { className } = this.props;
+    const { team, className } = this.props;
     const teamClass = classNames("team", className);
-
+    console.log(team);
     return (
       <div className={teamClass}>
         <Container>
@@ -31,7 +25,10 @@ export default class Team extends PureComponent {
             <Grid.Row>
               <Grid.Column width={5}>
                 <div className="team__column">
-                  <Emblem className="team__emblem" />
+                  <Emblem
+                    className="team__emblem"
+                    url={confApi.baseUrl + team.picture.thumb.url}
+                  />
                   <Button color="green" className="team__apply">
                     Подать заявку
                   </Button>
@@ -47,15 +44,10 @@ export default class Team extends PureComponent {
                     textAlign="center"
                     className="team__title"
                   >
-                    MEETEAMATE
+                    {team.title}
                   </Segment>
                   <Segment>
-                    <p className="team__short-description">
-                      Проект, в котором люди могут создавать свои команды и
-                      присоединяться к уже созданным, так как порой невозможно
-                      найти команду для соревнований в доте, команду с которой
-                      вы вместе будете учиться программированию.
-                    </p>
+                    <p className="team__short-description">{team.summary}</p>
                     <hr />
                     <div>
                       <span className="team__tag">#tag</span>
@@ -71,27 +63,7 @@ export default class Team extends PureComponent {
           <Segment size="large" textAlign="center" className="team__heading">
             КТО МЫ
           </Segment>
-          <Segment className="team__full-description">
-            <p>
-              Lorem Ipsum - это текст-рыба, часто используемый в печати и
-              вэб-дизайне. Lorem Ipsum является стандартной рыбой для текстов на
-              латинице с начала XVI века. В то время некий безы.
-            </p>
-            <p>
-              Lorem Ipsum не только успешно пережил без заметных изменений пять
-              веков, но и перешагнул в электронный дизайн. Его популяризации в
-              новое время послужили публикация листов Letraset с образцами Lorem
-              Ipsum в 60-х годах и, в более недавнее время, программы
-              электронной вёрстки типа Aldus PageMaker, в шаблонах которых
-              используется Lorem Ipsum.
-            </p>
-            <p>
-              Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский
-              набор слов, но это не совсем так. Его корни уходят в один фрагмент
-              классической латыни 45 года н.э., то есть более двух тысячелетий
-              назад.
-            </p>
-          </Segment>
+          <Segment className="team__full-description">{team.body}</Segment>
         </Container>
       </div>
     );

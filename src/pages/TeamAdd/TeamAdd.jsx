@@ -1,30 +1,29 @@
-import "./Team.scss";
+import "./TeamAdd.scss";
 
 import React, { PureComponent } from "react";
 import { Container } from "semantic-ui-react";
-
-import TeamContainer from "containers/TeamContainer";
-
 import PropTypes from "prop-types";
 import classNames from "classnames";
 
-export default class Team extends PureComponent {
+import TeamAddContainer from "containers/TeamAddContainer";
+
+export default class TeamAdd extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {};
   }
 
-  static propTypes = { match: PropTypes.object };
+  static propTypes = {};
 
   static defaultProps = {};
 
   render() {
-    const { match } = this.props;
+    const {} = this.props;
 
     return (
-      <div className="team-page">
+      <div className="team-add-page">
         <Container>
-          <TeamContainer tid={+match.params.id} className="team-page__team" />
+          <TeamAddContainer className="team-page__add" />
         </Container>
       </div>
     );
