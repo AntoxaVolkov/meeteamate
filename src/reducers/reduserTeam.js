@@ -4,13 +4,17 @@ import {
   teamRequest,
   teamSuccsess,
   teamFailure,
-  teamClear
+  teamClear,
+  pageRequest,
+  pageSuccsess,
+  pageFailure
 } from "actions/actionsTeams";
 
 const initialState = {
   id: null,
   isFetching: false,
-  didInvalidate: false
+  didInvalidate: false,
+  page: 1
 };
 
 export default handleActions(
@@ -42,6 +46,21 @@ export default handleActions(
         id: null,
         didInvalidate: false,
         isFetching: false
+      };
+    },
+    [pageRequest]: state => {
+      return {
+        ...state
+      };
+    },
+    [pageSuccsess]: (state, { payload: { page } }) => {
+      return {
+        page
+      };
+    },
+    [pageFailure]: state => {
+      return {
+        ...state
       };
     }
   },

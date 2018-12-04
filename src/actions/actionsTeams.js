@@ -77,4 +77,18 @@ export const createTeam = data => async dispatch => {
   }
 };
 
+export const pageRequest = createAction("[Page] Get  (request)");
+export const pageSuccsess = createAction("[Page] Get (succsess)");
+export const pageFailure = createAction("[Page] Get (failure)");
+
+export const updatePage = page => async dispatch => {
+  dispatch(pageRequest());
+  try {
+    dispatch(pageSuccsess({ page }));
+  } catch (error) {
+    console.log(error);
+    dispatch(pageFailure(error));
+  }
+};
+
 export const addTeams = createAction("[Teams] Add Teams");

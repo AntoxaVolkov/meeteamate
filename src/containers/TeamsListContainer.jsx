@@ -2,8 +2,9 @@ import React, { PureComponent, Fragment } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
-import { getTeams } from "actions/actionsTeams";
+import { getTeams, updatePage } from "actions/actionsTeams";
 import TeamsList from "components/TeamsList";
+import Pagination from "components/Pagination";
 
 const LoadMore = () => <div />;
 
@@ -14,7 +15,10 @@ class TeamsListContainer extends PureComponent {
     teams: PropTypes.array,
     limit: PropTypes.number,
     getListTeams: PropTypes.func,
-    isFetching: PropTypes.bool
+    isFetching: PropTypes.bool,
+    updatePage: PropTypes.func,
+    page: PropTypes.number,
+    count: PropTypes.number
   };
 
   static defaultProps = {
@@ -25,21 +29,26 @@ class TeamsListContainer extends PureComponent {
     this.loadTeams();
   }
 
-  loadTeams = (page = 1) => {
-    const { limit, getListTeams } = this.props;
+  loadTeams = () => {
+    const { limit, getListTeams, page } = this.props;
 
     getListTeams({ page, limit });
   };
 
-  loadMore = nextPage => {
-    this.loadTeams(nextPage);
+  loadMore = page => {
+    const { updatePage } = this.props;
+    page = page.page;
+    updatePage(page);
+    this.loadTeams(page);
   };
 
   render() {
-    const { teams, isFetching, limit } = this.props;
+    const { teams, isFetching, limit, page, count } = this.props;
+    let pages = Math.ceil(count / limit);
     return (
       <Fragment>
         <TeamsList limit={limit} teams={teams} />
+        <Pagination page={page} loadMore={this.loadMore} pages={pages} />
       </Fragment>
     );
   }
@@ -49,13 +58,16 @@ function mapStateToProps(state, ownProps) {
   return {
     ...ownProps,
     ...state.teamsShown,
-    teams: state.teamsShown.teams.map(teamId => state.teams.items[teamId])
+    ...state.team.page,
+    teams: state.teamsShown.teams.map(teamId => state.teams.items[teamId]),
+    page: state.team.page
   };
 }
 
 function mapDispatchToProps(dispatch, props) {
   return {
     ...props,
+    updatePage: page => dispatch(updatePage(page)),
     getListTeams: (page, limit) => dispatch(getTeams(page, limit))
   };
 }
