@@ -38,12 +38,12 @@ export default [
   },
   {
     path: "/team/edit/:id",
-    component: /* TeamleadOnlyContainer */ TeamEdit,
+    component: ProtectingContainer(TeamEdit),
     exact: true
   },
   {
     path: "/team/add",
-    component: /* TeamleadOnlyContainer */ TeamAdd,
+    component: ProtectingContainer(TeamAdd),
     exact: true
   },
   {
@@ -52,12 +52,7 @@ export default [
     exact: true
   },
   {
-    path: "/search/:page",
-    component: ProtectingContainer(Search),
-    exact: true
-  },
-  {
-    path: "/search/users",
+    path: "/search",
     component: ProtectingContainer(Search)
   },
   {

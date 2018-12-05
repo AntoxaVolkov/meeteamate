@@ -4,8 +4,7 @@ import { connect } from "react-redux";
 
 import { loadUsers } from "actions/actionsUsers";
 import UsersList from "components/UsersList";
-
-const LoadMore = () => <div />;
+import Pagination from "components/Pagination";
 
 class UsersListContainer extends PureComponent {
   //state = { page: 1 };
@@ -14,32 +13,42 @@ class UsersListContainer extends PureComponent {
     users: PropTypes.array,
     limit: PropTypes.number,
     getListUsers: PropTypes.func,
-    isFetching: PropTypes.bool
+    isFetching: PropTypes.bool,
+    count: PropTypes.number,
+    page: PropTypes.number
   };
 
   static defaultProps = {
-    limit: 6
+    limit: 6,
+    page: 1
   };
 
   componentDidMount() {
-    this.loadUsers();
+    this.loadUsers(this.props.page);
   }
 
-  loadUsers = (page = 1) => {
-    const { limit, getListUsers } = this.props;
+  componentDidUpdate(prevProps) {
+    if (prevProps.page !== this.props.page) {
+      console.log("loadUsers");
+      this.loadUsers(this.props.page);
+    }
+  }
 
+  loadUsers = page => {
+    const { limit, getListUsers } = this.props;
     getListUsers({ page, limit });
   };
 
-  loadMore = nextPage => {
-    this.loadUsers(nextPage);
-  };
-
   render() {
-    const { users, isFetching, limit } = this.props;
+    const { users, isFetching, limit, count, page } = this.props;
     return (
       <Fragment>
         <UsersList limit={limit} users={users} />
+        <Pagination
+          pagPath="/search/users"
+          pages={Math.ceil(count / limit)}
+          page={page}
+        />
       </Fragment>
     );
   }

@@ -11,9 +11,10 @@ export default class Teams extends PureComponent {
   };
 
   render() {
+    let page = this.props.match.params.page || 1;
     return (
       <div className="teams">
-        <TeamsListContainer limit={10} page={+this.props.match.params.page} />
+        <TeamsListContainer limit={10} page={+page} />
       </div>
     );
   }

@@ -6,8 +6,6 @@ import { getTeams } from "actions/actionsTeams";
 import TeamsList from "components/TeamsList";
 import Pagination from "components/Pagination";
 
-const LoadMore = () => <div />;
-
 class TeamsListContainer extends PureComponent {
   //state = { page: 1 };
 
@@ -21,32 +19,35 @@ class TeamsListContainer extends PureComponent {
   };
 
   static defaultProps = {
-    limit: 6
+    limit: 6,
+    page: 1
   };
 
   componentDidMount() {
     this.loadTeams(this.props.page);
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.page !== this.props.page) {
+      console.log("loadTeams");
+      this.loadTeams(this.props.page);
+    }
+  }
+
   loadTeams = page => {
     const { limit, getListTeams } = this.props;
-    console.log(page);
     getListTeams({ page, limit });
   };
-  /*
-  loadMore = () => {
-    this.loadTeams();
-  };
-*/
+
   render() {
     const { teams, isFetching, limit, count, page } = this.props;
     return (
       <Fragment>
         <TeamsList limit={limit} teams={teams} />
         <Pagination
+          pagPath="/search/teams"
           pages={Math.ceil(count / limit)}
           page={page}
-          onClick={this.loadTeams}
         />
       </Fragment>
     );

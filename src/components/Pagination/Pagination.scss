@@ -15,4 +15,12 @@
       padding: 10px;
     }
   }
+
+  &__link{
+    &--disable{
+      background-color: #DEDEDE !important;
+      color: darkgray !important;
+      cursor: default;
+    }
+  }
 }

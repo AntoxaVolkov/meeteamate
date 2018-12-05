@@ -7,7 +7,7 @@ export const usersRequest = createAction("[Users] Load  (request)");
 export const usersSuccsess = createAction("[Users] Load (succsess)");
 export const usersFailure = createAction("[Users] Load (failure)");
 
-export const loadUsers = (page, limit) => async dispatch => {
+export const loadUsers = ({ page, limit }) => async dispatch => {
   try {
     dispatch(usersRequest());
     let token = await dispatch(getChekedToken());
