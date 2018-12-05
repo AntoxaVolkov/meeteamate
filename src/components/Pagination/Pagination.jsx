@@ -13,7 +13,8 @@ export default class Pagination extends PureComponent {
 
   static propTypes = {
     pages: PropTypes.number,
-    onClick: PropTypes.func
+    onClick: PropTypes.func,
+    page: PropTypes.number
   };
 
   static defaultProps = {};
@@ -23,7 +24,7 @@ export default class Pagination extends PureComponent {
   };
 
   render() {
-    const { pages } = this.props;
+    const { pages, page } = this.props;
 
     return (
       <div>
@@ -34,10 +35,20 @@ export default class Pagination extends PureComponent {
             </Link>
           </li>
           <li>
-            <a>пред</a>
+            <Link
+              to={`/search/${page - 1 < 1 ? page : page - 1}`}
+              onClick={this.setPage}
+            >
+              пред
+            </Link>
           </li>
           <li>
-            <a>след</a>
+            <Link
+              to={`/search/${page + 1 > pages ? page : page + 1}`}
+              onClick={this.setPage}
+            >
+              след
+            </Link>
           </li>
           <li>
             <Link to={`/search/${pages}`} onClick={this.setPage}>

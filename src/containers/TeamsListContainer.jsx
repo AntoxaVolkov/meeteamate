@@ -30,20 +30,23 @@ class TeamsListContainer extends PureComponent {
 
   loadTeams = () => {
     const { limit, getListTeams, page } = this.props;
-
     getListTeams({ page, limit });
   };
-
+  /*
   loadMore = () => {
     this.loadTeams();
   };
-
+*/
   render() {
-    const { teams, isFetching, limit, count } = this.props;
+    const { teams, isFetching, limit, count, page } = this.props;
     return (
       <Fragment>
         <TeamsList limit={limit} teams={teams} />
-        <Pagination pages={Math.ceil(count / limit)} onClick={this.loadMore} />
+        <Pagination
+          pages={Math.ceil(count / limit)}
+          page={page}
+          onClick={this.loadTeams}
+        />
       </Fragment>
     );
   }
