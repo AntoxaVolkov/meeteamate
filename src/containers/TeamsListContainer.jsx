@@ -15,7 +15,9 @@ class TeamsListContainer extends PureComponent {
     teams: PropTypes.array,
     limit: PropTypes.number,
     getListTeams: PropTypes.func,
-    isFetching: PropTypes.bool
+    isFetching: PropTypes.bool,
+    count: PropTypes.number,
+    page: PropTypes.number
   };
 
   static defaultProps = {
@@ -23,25 +25,25 @@ class TeamsListContainer extends PureComponent {
   };
 
   componentDidMount() {
-    this.loadTeams();
+    this.loadTeams(this.props.page);
   }
 
-  loadTeams = (page = 1) => {
-    const { limit, getListTeams } = this.props;
+  loadTeams = () => {
+    const { limit, getListTeams, page } = this.props;
 
     getListTeams({ page, limit });
   };
 
-  loadMore = nextPage => {
-    this.loadTeams(nextPage);
+  loadMore = () => {
+    this.loadTeams();
   };
 
   render() {
-    const { teams, isFetching, limit } = this.props;
+    const { teams, isFetching, limit, count } = this.props;
     return (
       <Fragment>
         <TeamsList limit={limit} teams={teams} />
-        <Pagination />
+        <Pagination pages={Math.ceil(count / limit)} onClick={this.loadMore} />
       </Fragment>
     );
   }

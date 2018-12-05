@@ -44,7 +44,7 @@ export default class Search extends PureComponent {
             <Grid.Row column={2}>
               <Grid.Column width={4}>Фильтры</Grid.Column>
               <Grid.Column width={10}>
-                <Route exact={true} path="/search" component={Teams} />
+                <Route path="/search/:page" component={Teams} />
                 <Route path="/search/users" component={Users} />
               </Grid.Column>
             </Grid.Row>

@@ -36,7 +36,7 @@ export default class Header extends Component {
             </ShowGuest>
             <ShowUser>
               <Menu.Item>
-                <Link className="nav-link" to="/search">
+                <Link className="nav-link" to="/search/1">
                   Найти
                 </Link>
               </Menu.Item>

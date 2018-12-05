@@ -52,7 +52,7 @@ export default [
     exact: true
   },
   {
-    path: "/search",
+    path: "/search/:page",
     component: ProtectingContainer(Search),
     exact: true
   },
