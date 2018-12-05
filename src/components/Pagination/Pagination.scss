@@ -1,0 +1,26 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  padding-left: 0;
+   li {
+    background-color: #fff;
+    transition: .1s ease;
+     &:hover {
+      background-color: rgba(0, 0, 0, 0.03);
+      cursor: pointer;
+    }
+     a {
+      display: block;
+      padding: 10px;
+    }
+  }
+
+  &__link{
+    &--disable{
+      background-color: #DEDEDE !important;
+      color: darkgray !important;
+      cursor: default;
+    }
+  }
+}

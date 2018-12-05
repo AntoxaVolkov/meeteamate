@@ -4,8 +4,7 @@ import { connect } from "react-redux";
 
 import { getTeams } from "actions/actionsTeams";
 import TeamsList from "components/TeamsList";
-
-const LoadMore = () => <div />;
+import Pagination from "components/Pagination";
 
 class TeamsListContainer extends PureComponent {
   //state = { page: 1 };
@@ -14,32 +13,42 @@ class TeamsListContainer extends PureComponent {
     teams: PropTypes.array,
     limit: PropTypes.number,
     getListTeams: PropTypes.func,
-    isFetching: PropTypes.bool
+    isFetching: PropTypes.bool,
+    count: PropTypes.number,
+    page: PropTypes.number
   };
 
   static defaultProps = {
-    limit: 6
+    limit: 6,
+    page: 1
   };
 
   componentDidMount() {
-    this.loadTeams();
+    this.loadTeams(this.props.page);
   }
 
-  loadTeams = (page = 1) => {
-    const { limit, getListTeams } = this.props;
+  componentDidUpdate(prevProps) {
+    if (prevProps.page !== this.props.page) {
+      console.log("loadTeams");
+      this.loadTeams(this.props.page);
+    }
+  }
 
+  loadTeams = page => {
+    const { limit, getListTeams } = this.props;
     getListTeams({ page, limit });
   };
 
-  loadMore = nextPage => {
-    this.loadTeams(nextPage);
-  };
-
   render() {
-    const { teams, isFetching, limit } = this.props;
+    const { teams, isFetching, limit, count, page } = this.props;
     return (
       <Fragment>
         <TeamsList limit={limit} teams={teams} />
+        <Pagination
+          pagPath="/search/teams"
+          pages={Math.ceil(count / limit)}
+          page={page}
+        />
       </Fragment>
     );
   }

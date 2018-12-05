@@ -29,7 +29,7 @@ export default class Search extends PureComponent {
       <div className="search">
         <Container>
           <Segment>
-            Искать:
+            Искать:{" "}
             <Button.Group>
               <Link to="/search" className="ui button">
                 Команду
@@ -44,8 +44,11 @@ export default class Search extends PureComponent {
             <Grid.Row column={2}>
               <Grid.Column width={4}>Фильтры</Grid.Column>
               <Grid.Column width={10}>
-                <Route exact={true} path="/search" component={Teams} />
-                <Route path="/search/users" component={Users} />
+                <Route exact path="/search" component={Teams} />
+                <Route exact path="/search/users" component={Users} />
+                <Route exact path="/search/teams" component={Teams} />
+                <Route exact path="/search/teams/:page" component={Teams} />
+                <Route exact path="/search/users/:page" component={Users} />
               </Grid.Column>
             </Grid.Row>
           </Grid>
