@@ -28,8 +28,9 @@ class TeamsListContainer extends PureComponent {
     this.loadTeams(this.props.page);
   }
 
-  loadTeams = () => {
-    const { limit, getListTeams, page } = this.props;
+  loadTeams = page => {
+    const { limit, getListTeams } = this.props;
+    console.log(page);
     getListTeams({ page, limit });
   };
   /*

@@ -19,8 +19,24 @@ export default class Pagination extends PureComponent {
 
   static defaultProps = {};
 
-  setPage = () => {
-    this.props.onClick();
+  firstPage = () => {
+    this.props.onClick(1);
+  };
+
+  prevPage = () => {
+    let page = +location.pathname.split("/")[2] - 1;
+    page < 1 ? (page = 1) : (page = page);
+    this.props.onClick(page);
+  };
+
+  nextPage = () => {
+    let page = +location.pathname.split("/")[2] + 1;
+    page > this.props.pages ? (page = this.props.pages) : (page = page);
+    this.props.onClick(page);
+  };
+
+  lastPage = () => {
+    this.props.onClick(this.props.pages);
   };
 
   render() {
@@ -30,14 +46,14 @@ export default class Pagination extends PureComponent {
       <div>
         <ul className="pagination">
           <li>
-            <Link to="/search/1" onClick={this.setPage}>
+            <Link to="/search/1" onClick={this.firstPage}>
               первая
             </Link>
           </li>
           <li>
             <Link
               to={`/search/${page - 1 < 1 ? page : page - 1}`}
-              onClick={this.setPage}
+              onClick={this.prevPage}
             >
               пред
             </Link>
@@ -45,13 +61,13 @@ export default class Pagination extends PureComponent {
           <li>
             <Link
               to={`/search/${page + 1 > pages ? page : page + 1}`}
-              onClick={this.setPage}
+              onClick={this.nextPage}
             >
               след
             </Link>
           </li>
           <li>
-            <Link to={`/search/${pages}`} onClick={this.setPage}>
+            <Link to={`/search/${pages}`} onClick={this.lastPage}>
               последняя
             </Link>
           </li>
