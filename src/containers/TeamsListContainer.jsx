@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 
 import { getTeams } from "actions/actionsTeams";
 import TeamsList from "components/TeamsList";
+import Pagination from "components/Pagination";
 
 const LoadMore = () => <div />;
 
@@ -40,6 +41,7 @@ class TeamsListContainer extends PureComponent {
     return (
       <Fragment>
         <TeamsList limit={limit} teams={teams} />
+        <Pagination />
       </Fragment>
     );
   }
