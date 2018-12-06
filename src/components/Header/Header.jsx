@@ -11,6 +11,8 @@ import ProfoleBarContainer from "containers/ProfileBarContainer";
 import ShowUser from "containers/ShowUser";
 import ShowGuest from "containers/ShowGuest";
 
+import Logo from "components/Logo";
+
 export default class Header extends Component {
   static propTypes = {};
 
@@ -26,7 +28,10 @@ export default class Header extends Component {
       <header className={headerClass}>
         <Container>
           <Menu>
-            <Menu.Item header>meeTEAMate</Menu.Item>
+            <Menu.Item header>
+              {/*meeTEAMate*/}
+              <Logo />
+            </Menu.Item>
             <ShowGuest>
               <Menu.Item>
                 <Link className="nav-link" to="/">

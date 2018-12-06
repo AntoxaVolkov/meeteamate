@@ -4,8 +4,8 @@
     flex: 0 0 auto;
     font-family: Roboto;
     font-weight: 300;
-    min-height: 180px;
-    &__icon {
+    &__logo {
+        font-size: 2em;
         margin: 0 46px;
     }
     &__copy {
@@ -14,15 +14,22 @@
     &--background-color_dark {
         background-color: #18171D;
         color: #FFFFFF;
-        path {
-            fill: #FFFFFF;
-        }
+        min-height: 180px;
     }
     &--background-color_light {
-        background-color: #FFFFFF;
         color: #18171D;
-        path {
-            fill: #18171D;
+        font-size: .7em;
+        padding: 20px 0;
+        text-align: center;
+
+        .footer__div {
+            align-items: center;
+            display: flex;
+            justify-content: center;
+        }
+
+        .footer__logo {
+            margin-right: 10px;
         }
     }
 }
