@@ -5,7 +5,8 @@
     font-family: Roboto;
     font-weight: 300;
     min-height: 180px;
-    &__icon {
+    &__logo {
+        font-size: 2em;
         margin: 0 46px;
     }
     &__copy {
@@ -22,7 +23,7 @@
         background-color: #FFFFFF;
         color: #18171D;
         path {
-            fill: #18171D;
+            fill: #18171D !important;
         }
     }
 }
