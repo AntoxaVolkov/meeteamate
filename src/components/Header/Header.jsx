@@ -56,7 +56,7 @@ export default class Header extends Component {
               </div>
             </ShowGuest>
             <ShowUser>
-              <Menu.Item>
+              <div className="header__menu">
                 <Menu.Item>
                   <Link className="nav-link" to="/">
                     ГЛАВНАЯ
@@ -77,7 +77,7 @@ export default class Header extends Component {
                     НАЙТИ
                   </Link>
                 </Menu.Item>
-              </Menu.Item>
+              </div>
             </ShowUser>
             <ProfoleBarContainer />
           </Menu>
