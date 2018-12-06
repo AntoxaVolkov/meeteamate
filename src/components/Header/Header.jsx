@@ -29,24 +29,56 @@ export default class Header extends Component {
         <Container>
           <Menu>
             <Menu.Item header>
-              {/*meeTEAMate*/}
-              <Logo />
+              <Logo className="header__logo" />
             </Menu.Item>
             <ShowGuest>
-              <Menu.Item>
-                <Link className="nav-link" to="/">
-                  Home
-                </Link>
-              </Menu.Item>
+              <div className="header__menu">
+                <Menu.Item>
+                  <Link className="nav-link" to="/">
+                    ГЛАВНАЯ
+                  </Link>
+                </Menu.Item>
+                <Menu.Item>
+                  <Link className="nav-link" to="/rules">
+                    ПРАВИЛА
+                  </Link>
+                </Menu.Item>
+                <Menu.Item>
+                  <Link className="nav-link" to="/faq">
+                    ЧАВО
+                  </Link>
+                </Menu.Item>
+                <Menu.Item>
+                  <Link className="nav-link" to="/search">
+                    НАЙТИ
+                  </Link>
+                </Menu.Item>
+              </div>
             </ShowGuest>
             <ShowUser>
               <Menu.Item>
-                <Link className="nav-link" to="/search">
-                  Найти
-                </Link>
+                <Menu.Item>
+                  <Link className="nav-link" to="/">
+                    ГЛАВНАЯ
+                  </Link>
+                </Menu.Item>
+                <Menu.Item>
+                  <Link className="nav-link" to="/rules">
+                    ПРАВИЛА
+                  </Link>
+                </Menu.Item>
+                <Menu.Item>
+                  <Link className="nav-link" to="/faq">
+                    ЧАВО
+                  </Link>
+                </Menu.Item>
+                <Menu.Item>
+                  <Link className="nav-link" to="/search">
+                    НАЙТИ
+                  </Link>
+                </Menu.Item>
               </Menu.Item>
             </ShowUser>
-            <Menu.Menu position="right" />
             <ProfoleBarContainer />
           </Menu>
         </Container>

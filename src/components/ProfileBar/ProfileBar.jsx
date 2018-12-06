@@ -31,8 +31,8 @@ export default class ProfileBar extends PureComponent {
 
     let element = (
       <Menu.Item>
-        <Link className="nav-link ui positive button" to="/login">
-          Войти
+        <Link className="nav-link ui positive button login" to="/login">
+          ВОЙТИ
         </Link>
       </Menu.Item>
     );
