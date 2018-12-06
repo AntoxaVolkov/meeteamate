@@ -8,7 +8,13 @@ import Logo from "components/Logo";
 export default class Footer extends Component {
   render() {
     return (
-      <footer className="footer footer--background-color_dark">
+      <footer
+        className={
+          location.pathname === "/"
+            ? "footer footer--background-color_dark"
+            : "footer footer--background-color_light"
+        }
+      >
         <Container>
           {/*<svg
             className="footer__icon"
@@ -22,8 +28,10 @@ export default class Footer extends Component {
               fill="#fff"
             />
           </svg>*/}
-          <Logo className="footer__logo" />
-          <p className="footer__copy">&copy; MEETEAMATE 2018</p>
+          <div className="footer__div">
+            <Logo className="footer__logo" />
+            <p className="footer__copy">&copy; MEETEAMATE 2018</p>
+          </div>
         </Container>
       </footer>
     );
