@@ -15,9 +15,6 @@
         background-color: #18171D;
         color: #FFFFFF;
         min-height: 180px;
-        path {
-            fill: #FFFFFF;
-        }
     }
     &--background-color_light {
         color: #18171D;
@@ -32,10 +29,6 @@
 
         .footer__logo {
             margin-right: 10px;
-        }
-
-        path {
-            fill: #18171D !important;
         }
     }
 }

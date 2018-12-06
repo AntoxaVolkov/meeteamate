@@ -30,7 +30,7 @@ export default class Header extends Component {
           <Menu>
             <Menu.Item header>
               {/*meeTEAMate*/}
-              <Logo className="header__logo" />
+              <Logo />
             </Menu.Item>
             <ShowGuest>
               <Menu.Item>

@@ -2,6 +2,7 @@
   align-items: center;
   background: url('../../assets/images/home-top-block-background.jpg') bottom center;
   background-size: cover;
+  color: white;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -9,7 +10,6 @@
   min-height: 100vh;
 
   &__title {
-    color: white;
     font-size: 6em;
   }
 
