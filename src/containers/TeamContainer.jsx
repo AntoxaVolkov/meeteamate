@@ -20,6 +20,7 @@ class TeamContainer extends PureComponent {
     isFetching: PropTypes.bool,
     tid: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    currentUID: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     error: PropTypes.bool
   };
 
@@ -37,10 +38,6 @@ class TeamContainer extends PureComponent {
 
   loadTeam = () => {
     let { teams, getTeam, tid, error, changeTeam, id } = this.props;
-    console.log("/////////////// load /////////////////");
-    console.log(tid);
-    console.log(this.props);
-    console.log("////////////////////////////////");
     if (tid && !error && !teams[tid]) {
       getTeam(tid);
     } else if (tid && !error && teams[tid] && id !== tid) {
@@ -49,12 +46,12 @@ class TeamContainer extends PureComponent {
   };
 
   render() {
-    const { id, teams, isFetching, className, tid } = this.props;
-
-    console.log(id);
-    console.log(teams[id]);
-
-    return teams[id] ? <Team className={className} team={teams[id]} /> : "";
+    const { id, teams, className, currentUID } = this.props;
+    return teams[id] ? (
+      <Team className={className} currentUID={currentUID} team={teams[id]} />
+    ) : (
+      ""
+    );
   }
 }
 
@@ -63,6 +60,7 @@ function mapStateToProps(state, ownProps) {
   return {
     ...ownProps,
     ...state.team,
+    currentUID: state.auth.userId,
     isFetching: state.team.isFetching,
     error: state.team.didInvalidate,
     teams: state.teams.items

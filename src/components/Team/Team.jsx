@@ -12,10 +12,11 @@ import Emblem from "components/Emblem";
 export default class Team extends PureComponent {
   static propTypes = {
     team: PropTypes.object,
-    className: PropTypes.string
+    className: PropTypes.string,
+    currentUID: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
   };
   render() {
-    const { team, className } = this.props;
+    const { team, className, currentUID } = this.props;
     const teamClass = classNames("team", className);
     console.log(team);
     return (
@@ -24,18 +25,29 @@ export default class Team extends PureComponent {
           <Grid columns={2}>
             <Grid.Row>
               <Grid.Column width={5}>
-                <div className="team__column">
+                <Segment size="massive" className="team__column">
                   <Emblem
                     className="team__emblem"
                     url={confApi.baseUrl + team.picture.thumb.url}
                   />
-                  <Button color="green" className="team__apply">
-                    Подать заявку
-                  </Button>
-                  <Link className="ui primary button" to="/team/edit">
-                    Редактировать
-                  </Link>
-                </div>
+                  {currentUID !== team["user_id"] ? (
+                    <Button color="green" className="team__apply">
+                      Подать заявку
+                    </Button>
+                  ) : (
+                    ""
+                  )}
+                  {currentUID === team["user_id"] ? (
+                    <Link
+                      className="ui primary button"
+                      to={`/team/edit/${team.id}`}
+                    >
+                      Редактировать
+                    </Link>
+                  ) : (
+                    ""
+                  )}
+                </Segment>
               </Grid.Column>
               <Grid.Column width={11}>
                 <div className="team__info">
