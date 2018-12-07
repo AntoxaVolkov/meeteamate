@@ -31,54 +31,32 @@ export default class Header extends Component {
             <Menu.Item header>
               <Logo className="header__logo" />
             </Menu.Item>
-            <ShowGuest>
-              <div className="header__menu">
+            <div className="header__menu">
+              <ShowGuest>
                 <Menu.Item>
                   <Link className="nav-link" to="/">
-                    ГЛАВНАЯ
+                    главная
                   </Link>
                 </Menu.Item>
-                <Menu.Item>
-                  <Link className="nav-link" to="/rules">
-                    ПРАВИЛА
-                  </Link>
-                </Menu.Item>
-                <Menu.Item>
-                  <Link className="nav-link" to="/faq">
-                    ЧАВО
-                  </Link>
-                </Menu.Item>
-                <Menu.Item>
-                  <Link className="nav-link" to="/search">
-                    НАЙТИ
-                  </Link>
-                </Menu.Item>
-              </div>
-            </ShowGuest>
-            <ShowUser>
-              <div className="header__menu">
-                <Menu.Item>
-                  <Link className="nav-link" to="/">
-                    ГЛАВНАЯ
-                  </Link>
-                </Menu.Item>
-                <Menu.Item>
-                  <Link className="nav-link" to="/rules">
-                    ПРАВИЛА
-                  </Link>
-                </Menu.Item>
-                <Menu.Item>
-                  <Link className="nav-link" to="/faq">
-                    ЧАВО
-                  </Link>
-                </Menu.Item>
+              </ShowGuest>
+              <Menu.Item>
+                <Link className="nav-link" to="/rules">
+                  правила
+                </Link>
+              </Menu.Item>
+              <Menu.Item>
+                <Link className="nav-link" to="/faq">
+                  чаво
+                </Link>
+              </Menu.Item>
+              <ShowUser>
                 <Menu.Item>
                   <Link className="nav-link" to="/search">
-                    НАЙТИ
+                    найти
                   </Link>
                 </Menu.Item>
-              </div>
-            </ShowUser>
+              </ShowUser>
+            </div>
             <ProfoleBarContainer />
           </Menu>
         </Container>
