@@ -115,7 +115,10 @@ export default class TeamEdit extends PureComponent {
                 </Form>
               </Grid.Column>
               <Grid.Column width={4}>
-                <TeamEmblemEdit onChange={this.handleChangeEmblem} />
+                <TeamEmblemEdit
+                  picture={this.props.team.picture}
+                  onChange={this.handleChangeEmblem}
+                />
               </Grid.Column>
             </Grid.Row>
           </Grid>

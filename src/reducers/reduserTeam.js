@@ -8,7 +8,6 @@ import {
 } from "actions/actionsTeams";
 
 const initialState = {
-  id: null,
   isFetching: false,
   didInvalidate: false
 };
@@ -22,10 +21,9 @@ export default handleActions(
         didInvalidate: false
       };
     },
-    [teamSuccsess]: (state, { payload: { id } }) => {
+    [teamSuccsess]: state => {
       return {
         ...state,
-        id,
         isFetching: false,
         didInvalidate: false
       };
@@ -34,13 +32,6 @@ export default handleActions(
       return {
         ...state,
         didInvalidate: true,
-        isFetching: false
-      };
-    },
-    [teamClear]: state => {
-      return {
-        id: null,
-        didInvalidate: false,
         isFetching: false
       };
     }

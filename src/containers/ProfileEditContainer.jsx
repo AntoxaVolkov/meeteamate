@@ -69,7 +69,6 @@ function mapStateToProps(state, ownProps) {
     ...ownProps,
     ...state.user,
     currentUserId: state.auth.userId,
-    isFetching: state.user.isFetching,
     users: state.users.items,
     user: state.user
   };

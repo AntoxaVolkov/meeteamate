@@ -4,7 +4,8 @@ import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import Emblem from "components/Emblem";
-import { Segment, Button } from "semantic-ui-react";
+
+import { confApi } from "configApp";
 
 export default class TeamEmblemEdit extends PureComponent {
   constructor(props) {
@@ -15,9 +16,18 @@ export default class TeamEmblemEdit extends PureComponent {
     };
   }
 
-  static propTypes = { onChange: PropTypes.func.isRequired };
+  static propTypes = {
+    onChange: PropTypes.func.isRequired,
+    picture: PropTypes.object
+  };
 
   static defaultProps = {};
+
+  componentDidMount() {
+    let { picture } = this.props;
+    let previewUrl = confApi.baseUrl + picture.thumb.url;
+    this.setState({ previewUrl });
+  }
 
   handleChange = e => {
     e.preventDefault();

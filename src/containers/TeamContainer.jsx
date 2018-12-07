@@ -2,12 +2,7 @@ import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
-import {
-  getTeam,
-  teamSuccsess,
-  teamClear,
-  getTeams
-} from "actions/actionsTeams";
+import { getTeam } from "actions/actionsTeams";
 import Team from "components/Team";
 
 class TeamContainer extends PureComponent {
@@ -15,11 +10,8 @@ class TeamContainer extends PureComponent {
     className: PropTypes.string,
     teams: PropTypes.object,
     getTeam: PropTypes.func,
-    changeTeam: PropTypes.func,
-    teamClear: PropTypes.func,
     isFetching: PropTypes.bool,
     tid: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-    id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     currentUID: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     error: PropTypes.bool
   };
@@ -29,26 +21,17 @@ class TeamContainer extends PureComponent {
     this.loadTeam();
   }
 
-  componentWillUnmount() {
-    console.log("componentDidUnmouted");
-    const { teamClear } = this.props;
-
-    teamClear();
-  }
-
   loadTeam = () => {
-    let { teams, getTeam, tid, error, changeTeam, id } = this.props;
+    let { teams, getTeam, tid, error } = this.props;
     if (tid && !error && !teams[tid]) {
       getTeam(tid);
-    } else if (tid && !error && teams[tid] && id !== tid) {
-      changeTeam({ id: tid });
     }
   };
 
   render() {
-    const { id, teams, className, currentUID } = this.props;
-    return teams[id] ? (
-      <Team className={className} currentUID={currentUID} team={teams[id]} />
+    const { tid, teams, className, currentUID } = this.props;
+    return teams[tid] ? (
+      <Team className={className} currentUID={currentUID} team={teams[tid]} />
     ) : (
       ""
     );
@@ -70,9 +53,7 @@ function mapStateToProps(state, ownProps) {
 function mapDispatchToProps(dispatch, props) {
   return {
     ...props,
-    getTeam: id => dispatch(getTeam(id)),
-    changeTeam: id => dispatch(teamSuccsess(id)),
-    teamClear: () => dispatch(teamClear())
+    getTeam: id => dispatch(getTeam(id))
   };
 }
 

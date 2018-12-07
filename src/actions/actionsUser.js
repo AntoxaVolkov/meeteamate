@@ -18,7 +18,7 @@ export const getUser = uid => async dispatch => {
     let user = await Users.getUser(uid, token);
     let { id } = user;
     dispatch(addUsers({ users: { [id]: user } }));
-    dispatch(userSuccsess({ id }));
+    dispatch(userSuccsess());
   } catch (error) {
     console.log(error);
     dispatch(userFailure(error));
@@ -38,7 +38,7 @@ export const updateUser = data => async dispatch => {
     console.log(user);
     let { id } = user;
     dispatch(addUsers({ users: { [id]: user } }));
-    dispatch(userSuccsess({ id }));
+    dispatch(userSuccsess());
   } catch (error) {
     console.log(error);
     dispatch(userFailure(error));
@@ -54,7 +54,7 @@ export const updateUserAvatar = data => async dispatch => {
     console.log(user);
     let { id } = user;
     dispatch(addUsers({ users: { [id]: user } }));
-    dispatch(userSuccsess({ id }));
+    dispatch(userSuccsess());
   } catch (error) {
     console.log(error);
     dispatch(userFailure(error));
