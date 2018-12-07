@@ -29,24 +29,34 @@ export default class Header extends Component {
         <Container>
           <Menu>
             <Menu.Item header>
-              {/*meeTEAMate*/}
-              <Logo />
+              <Logo className="header__logo" />
             </Menu.Item>
-            <ShowGuest>
+            <div className="header__menu">
+              <ShowGuest>
+                <Menu.Item>
+                  <Link className="nav-link" to="/">
+                    Главная
+                  </Link>
+                </Menu.Item>
+              </ShowGuest>
               <Menu.Item>
-                <Link className="nav-link" to="/">
-                  Home
+                <Link className="nav-link" to="/rules">
+                  Правила
                 </Link>
               </Menu.Item>
-            </ShowGuest>
-            <ShowUser>
               <Menu.Item>
-                <Link className="nav-link" to="/search">
-                  Найти
+                <Link className="nav-link" to="/faq">
+                  Чаво
                 </Link>
               </Menu.Item>
-            </ShowUser>
-            <Menu.Menu position="right" />
+              <ShowUser>
+                <Menu.Item>
+                  <Link className="nav-link" to="/search">
+                    Найти
+                  </Link>
+                </Menu.Item>
+              </ShowUser>
+            </div>
             <ProfoleBarContainer />
           </Menu>
         </Container>

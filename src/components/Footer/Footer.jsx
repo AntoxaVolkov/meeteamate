@@ -30,7 +30,7 @@ export default class Footer extends Component {
           </svg>*/}
           <div className="footer__div">
             <Logo className="footer__logo" />
-            <p className="footer__copy">&copy; MEETEAMATE 2018</p>
+            <p className="footer__copy">&copy; meeteamate 2018</p>
           </div>
         </Container>
       </footer>

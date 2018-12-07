@@ -7,6 +7,8 @@ import NotFound from "pages/NotFound";
 import Team from "pages/Team";
 import TeamEdit from "pages/TeamEdit";
 import TeamAdd from "pages/TeamAdd";
+import Rules from "pages/Rules";
+import Faq from "pages/Faq";
 
 import ProtectingContainer from "containers/ProtectingContainer";
 import GuestOnlyContainer from "containers/GuestOnlyContainer";
@@ -54,6 +56,14 @@ export default [
   {
     path: "/search",
     component: ProtectingContainer(Search)
+  },
+  {
+    path: "/rules",
+    component: Rules
+  },
+  {
+    path: "/faq",
+    component: Faq
   },
   {
     component: NotFound

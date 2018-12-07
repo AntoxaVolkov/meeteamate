@@ -33,8 +33,8 @@ export default class HomeTopBlock extends PureComponent {
           />
         </svg>*/}
         <Logo className="home-top-block__logo" />
-        <h1 className="home-top-block__title">MEETEAMATE</h1>
-        <button className="home-top-block__find-team">НАЙТИ КОМАНДУ</button>
+        <h1 className="home-top-block__title">Meeteamate</h1>
+        <button className="home-top-block__find-team">Найти команду</button>
       </div>
     );
   }

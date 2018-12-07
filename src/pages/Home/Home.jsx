@@ -19,7 +19,7 @@ export default class Home extends Component {
               празднование, так и для создания своего бизнеса и реализации идеи
               стартапа!
             </p>
-            <h2 className="home-page__opportunities-title">возможности</h2>
+            <h2 className="home-page__opportunities-title">Возможности</h2>
 
             <div className="home-page__opportunities">
               <div className="home-page__opportunitie">

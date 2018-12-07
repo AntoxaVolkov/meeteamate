@@ -1,8 +1,57 @@
 .header {
+  .ui .menu {
+    border: none;
+    box-shadow: none;
+    margin-top: 40px;
+
+    .item:before {
+      width: 0;
+    }
+
+    .item .login {
+      background: linear-gradient(102deg, rgba(87, 179, 72, .81) 20%, rgba(3, 133, 141, .62) 87%);
+      border-radius: 30px;
+      font-size: 1.6em;
+      padding: 14px 46px;
+      text-transform: uppercase;
+    }
+
+    .item .login:hover {
+      background-color: rgba(87, 179, 72, .81);
+    }
+  }
+
+  &__logo {
+    font-size: 2.1em;
+  }
+  
+  &__menu {
+    display: flex;
+    margin: 0 auto;
+
+    a {
+      color: black;
+      text-transform: uppercase;
+    }
+  }
 }
 
 .header--in-top {
   left: 50%;
   position: absolute;
   transform: translateX(-50%);
+
+  .header {
+    &__logo {
+      color: white;
+    }
+
+    &__menu a {
+      color: white;
+    }
+  }
+
+  .ui .menu {
+    background: transparent;
+  }
 }
