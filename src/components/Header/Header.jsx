@@ -35,24 +35,24 @@ export default class Header extends Component {
               <ShowGuest>
                 <Menu.Item>
                   <Link className="nav-link" to="/">
-                    главная
+                    Главная
                   </Link>
                 </Menu.Item>
               </ShowGuest>
               <Menu.Item>
                 <Link className="nav-link" to="/rules">
-                  правила
+                  Правила
                 </Link>
               </Menu.Item>
               <Menu.Item>
                 <Link className="nav-link" to="/faq">
-                  чаво
+                  Чаво
                 </Link>
               </Menu.Item>
               <ShowUser>
                 <Menu.Item>
                   <Link className="nav-link" to="/search">
-                    найти
+                    Найти
                   </Link>
                 </Menu.Item>
               </ShowUser>
