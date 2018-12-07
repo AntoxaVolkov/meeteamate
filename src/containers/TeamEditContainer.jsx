@@ -1,50 +1,38 @@
 import React, { PureComponent, Fragment } from "react";
 import { connect } from "react-redux";
+import { withRouter } from "react-router";
 import PropTypes from "prop-types";
 
-import {
-  getTeam,
-  teamSuccsess,
-  teamClear,
-  updateTeam
-} from "actions/actionsTeams";
+import { getTeam, updateTeam } from "actions/actionsTeams";
 import TeamEdit from "components/TeamEdit";
 
 class TeamEditContainer extends PureComponent {
   static propTypes = {
     tid: PropTypes.number,
-    id: PropTypes.number,
+    currentUID: PropTypes.number,
     teams: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired,
     isFetching: PropTypes.bool,
     error: PropTypes.bool,
     updateTeam: PropTypes.func,
-    getTeam: PropTypes.func,
-    clearTeam: PropTypes.func,
-    changeTeam: PropTypes.func
+    getTeam: PropTypes.func
   };
 
   componentDidMount() {
-    console.log("componentDidMouted");
+    console.log("componentDidMouted Edit");
     this.loadTeam();
   }
 
-  componentWillUnmount() {
-    console.log("componentDidUnmouted");
-    const { clearTeam } = this.props;
-
-    teamClear();
+  componentDidupdate() {
+    const { history, teams, tid, currentUID } = this.props;
+    if (teams[tid] && currentUID !== teams[tid]["user_id"]) history.push("/");
+    if (!teams[tid]) this.loadTeam();
   }
 
   loadTeam = () => {
-    let { teams, getTeam, tid, error, changeTeam, id } = this.props;
-    console.log("/////////////// load /////////////////");
-    console.log(tid);
-    console.log(this.props);
-    console.log("////////////////////////////////");
+    let { teams, getTeam, tid, error } = this.props;
     if (tid && !error && !teams[tid]) {
       getTeam(tid);
-    } else if (tid && !error && teams[tid] && id !== tid) {
-      changeTeam({ id: tid });
     }
   };
 
@@ -55,10 +43,9 @@ class TeamEditContainer extends PureComponent {
   };
 
   render() {
-    const { teams, id } = this.props;
-
-    return teams[id] ? (
-      <TeamEdit team={teams[id]} onSubmit={this.handleSubmit} />
+    const { teams, tid } = this.props;
+    return teams[tid] ? (
+      <TeamEdit team={teams[tid]} onSubmit={this.handleSubmit} />
     ) : (
       ""
     );
@@ -69,7 +56,8 @@ const mapStateToProps = (state, ownProps) => {
   return {
     ...ownProps,
     ...state.team,
-    teams: state.teams.items
+    teams: state.teams.items,
+    currentUID: state.auth.userId
   };
 };
 
@@ -77,13 +65,11 @@ function mapDispatchToProps(dispatch, props) {
   return {
     ...props,
     getTeam: id => dispatch(getTeam(id)),
-    changeTeam: id => dispatch(teamSuccsess(id)),
-    updateTeam: id => dispatch(updateTeam(id)),
-    teamClear: () => dispatch(teamClear())
+    updateTeam: id => dispatch(updateTeam(id))
   };
 }
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(TeamEditContainer);
+)(withRouter(TeamEditContainer));

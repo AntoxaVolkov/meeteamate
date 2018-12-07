@@ -9,6 +9,7 @@
   left: 30px;
   position: absolute;
   top: 50%;
+  text-transform: uppercase;
   transform: translateY(-50%);
 }
 
@@ -32,6 +33,7 @@
   font-size: 16px;
   font-weight: 100;
   margin: 0 auto;
+  text-transform: uppercase;
 }
 
 .ui.form .register-form__submit .button:hover {
