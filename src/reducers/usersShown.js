@@ -41,3 +41,6 @@ export default handleActions(
   },
   initialState
 );
+
+export const getUsersList = state =>
+  state.usersShown.users.map(id => state.users.items[id]);

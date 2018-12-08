@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 import { loadUsers } from "actions/actionsUsers";
+import { getUsersList } from "reducers/usersShown";
 import UsersList from "components/UsersList";
 import Pagination from "components/Pagination";
 
@@ -59,7 +60,7 @@ function mapStateToProps(state, ownProps) {
   return {
     ...ownProps,
     ...state.usersShown,
-    users: state.usersShown.users.map(userId => state.users.items[userId])
+    users: getUsersList(state)
   };
 }
 

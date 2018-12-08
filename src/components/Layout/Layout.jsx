@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 
 import Header from "components/Header";
 import Footer from "components/Footer";
+import NotificationsContainer from "containers/NotificationsContainer";
 
 export default class Layout extends Component {
   static propTypes = {
@@ -19,6 +20,7 @@ export default class Layout extends Component {
     return (
       <div className="layout">
         <Header />
+        <NotificationsContainer className="layout__noty" />
         <main className="layout__page">{children}</main>
         <Footer />
       </div>
