@@ -4,6 +4,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Container, Image, Segment, Grid, Icon } from "semantic-ui-react";
 import Avatar from "components/Avatar";
+import UserTeams from "components/UserTeams";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import { confApi } from "configApp";
@@ -24,8 +25,8 @@ export default class Profile extends Component {
     let src = confApi.baseUrl + user.picture.thumb.url;
     return (
       <div className={profileClass}>
-        <Container className="profile__header">
-          <Grid columns={2}>
+        <Container>
+          <Grid className="profile__header" columns={2}>
             <Grid.Row>
               <Grid.Column width={4}>
                 <div className="profile__column">
@@ -48,8 +49,9 @@ export default class Profile extends Component {
                 <div className="profile__about">{user.about}</div>
               </Grid.Column>
             </Grid.Row>
+            <Segment className="profile__segment" />
           </Grid>
-          <Segment className="profile__segment" />
+          <UserTeams />
         </Container>
       </div>
     );
