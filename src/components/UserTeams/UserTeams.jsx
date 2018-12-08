@@ -78,7 +78,9 @@ export default class UserTeams extends PureComponent {
     };
   }
 
-  static propTypes = {};
+  static propTypes = {
+    self: PropTypes.bool
+  };
 
   static defaultProps = {};
 
@@ -89,7 +91,7 @@ export default class UserTeams extends PureComponent {
   };
 
   render() {
-    const {} = this.props;
+    const { self } = this.props;
 
     const panes = [
       {
@@ -115,8 +117,8 @@ export default class UserTeams extends PureComponent {
               <hr />
               <p onClick={this.showAllLeader}>
                 {this.zaglushka1.count > 3
-                  ? `${this.state.showLeader ? "скрыть" : "все"}(
-                    ${this.zaglushka1.count - 3})`
+                  ? `${this.state.showLeader ? "скрыть " : "все "}(${this
+                      .zaglushka1.count - 3})`
                   : null}
               </p>
             </div>
@@ -146,8 +148,8 @@ export default class UserTeams extends PureComponent {
               <hr />
               <p onClick={this.showAllLeader}>
                 {this.zaglushka2.count > 3
-                  ? `${this.state.showLeader ? "скрыть" : "все"}(
-                    ${this.zaglushka2.count - 3})`
+                  ? `${this.state.showLeader ? "скрыть " : "все "}(${this
+                      .zaglushka2.count - 3})`
                   : null}
               </p>
             </div>
@@ -160,12 +162,14 @@ export default class UserTeams extends PureComponent {
       <div className="user-teams">
         <Segment textAlign="center" className="user-teams__segment">
           <p className="user-teams__heading">Команды</p>
-          <Link
-            className="nav-link ui positive button user-teams__create-team"
-            to="/team/add"
-          >
-            Создать команду
-          </Link>
+          {self ? (
+            <Link
+              className="nav-link ui positive button user-teams__create-team"
+              to="/team/add"
+            >
+              Создать команду
+            </Link>
+          ) : null}
         </Segment>
         <Segment>
           <Tab menu={{ secondary: true, pointing: true }} panes={panes} />

@@ -19,7 +19,7 @@ export default class Profile extends Component {
     self: PropTypes.bool
   };
   render() {
-    let { user, className } = this.props;
+    let { user, className, self } = this.props;
     const profileClass = classNames("profile", className);
 
     let src = confApi.baseUrl + user.picture.thumb.url;
@@ -51,7 +51,7 @@ export default class Profile extends Component {
             </Grid.Row>
             <Segment className="profile__segment" />
           </Grid>
-          <UserTeams />
+          <UserTeams self={self} />
         </Container>
       </div>
     );

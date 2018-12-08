@@ -43,6 +43,10 @@
       display: none;
     }
   }
+
+  &__show-all:hover {
+    cursor: pointer;
+  }
 }
 
 .ui.secondary.pointing.menu {
