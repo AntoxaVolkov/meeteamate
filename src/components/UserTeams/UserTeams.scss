@@ -25,6 +25,24 @@
     background: #2E87AE !important;
     color: white !important;
   }
+
+  &__team-list {
+    border: none !important;
+    border-bottom: 1px solid rgba(34, 36, 38, .15) !important;
+    box-shadow: none !important;
+    display: grid;
+    grid-gap: 30px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  &__show-all {
+    grid-column: 1 / 4;
+    text-align: center;
+
+    &--hide {
+      display: none;
+    }
+  }
 }
 
 .ui.secondary.pointing.menu {

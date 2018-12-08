@@ -1,0 +1,16 @@
+.team-card {
+  margin: 0 !important;
+
+  &__title {
+    font-size: 1.5em;
+  }
+
+  &__tags {
+    font-size: .7em;
+  }
+
+  &__hr {
+    border: .5px solid #C4C4C4;
+  }
+}
+      
