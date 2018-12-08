@@ -50,7 +50,7 @@ export default [
   },
   {
     path: "/team/:id",
-    component: Team,
+    component: ProtectingContainer(Team),
     exact: true
   },
   {
