@@ -74,7 +74,9 @@ export default class UserTeams extends PureComponent {
     };
     this.state = {
       showLeader: false,
-      showLeaderTxt: "все"
+      showLeaderTxt: "все",
+      showMember: false,
+      showMemberTxt: "все"
     };
   }
 
@@ -85,9 +87,11 @@ export default class UserTeams extends PureComponent {
   static defaultProps = {};
 
   showAllLeader = () => {
-    console.log("click");
     this.setState({ showLeader: !this.state.showLeader });
-    console.log("click");
+  };
+
+  showAllMember = () => {
+    this.setState({ showMember: !this.state.showMember });
   };
 
   render() {
@@ -129,7 +133,7 @@ export default class UserTeams extends PureComponent {
         menuItem: "Участник",
         render: () => (
           <Tab.Pane attached={false} className="user-teams__team-list">
-            {this.state.showLeader === true
+            {this.state.showMember === true
               ? this.zaglushka2.teams.map((team, index) => {
                   return <TeamCard team={team} key={index} />;
                 })
@@ -146,9 +150,9 @@ export default class UserTeams extends PureComponent {
               }
             >
               <hr />
-              <p onClick={this.showAllLeader}>
+              <p onClick={this.showAllMember}>
                 {this.zaglushka2.count > 3
-                  ? `${this.state.showLeader ? "скрыть " : "все "}(${this
+                  ? `${this.state.showMember ? "скрыть " : "все "}(${this
                       .zaglushka2.count - 3})`
                   : null}
               </p>
