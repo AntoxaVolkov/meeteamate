@@ -6,7 +6,7 @@ import classNames from "classnames";
 import { Link } from "react-router-dom";
 import { confApi } from "configApp";
 
-import Avatar from "components/Avatar";
+import Emblem from "components/Emblem";
 
 export default class TeamsItem extends PureComponent {
   static propTypes = { team: PropTypes.object.isRequired };
@@ -21,7 +21,7 @@ export default class TeamsItem extends PureComponent {
     return (
       <div className="teams-item">
         <div className="teams-item__avatar">
-          <Avatar url={src} medium />
+          <Emblem url={src} medium />
         </div>
         <div className="teams-item__info">
           <Link to={`/team/${team.id}`}>

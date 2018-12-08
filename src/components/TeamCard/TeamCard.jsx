@@ -4,7 +4,7 @@ import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 
-import Avatar from "components/Avatar";
+import Emblem from "components/Emblem";
 
 import { Segment, Grid } from "semantic-ui-react";
 
@@ -26,9 +26,9 @@ export default class TeamCard extends PureComponent {
     return (
       <Segment className="team-card">
         <Grid className="team-card__about-team" columns={2}>
-          <Grid.Row>
+          <Grid.Row verticalAlign="middle">
             <Grid.Column width={4}>
-              <Avatar src mini />
+              <Emblem src mini />
             </Grid.Column>
             <Grid.Column>
               <p className="team-card__title">{team.title}</p>
