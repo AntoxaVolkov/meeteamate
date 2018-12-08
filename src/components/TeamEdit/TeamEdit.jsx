@@ -60,7 +60,8 @@ export default class TeamEdit extends PureComponent {
 
   render() {
     //const {onSubmit} = this.props;
-
+    let picture = this.props.team ? this.props.team.picture : null;
+    console.log(picture);
     return (
       <div className="team-edit">
         <Segment>
@@ -116,7 +117,7 @@ export default class TeamEdit extends PureComponent {
               </Grid.Column>
               <Grid.Column width={4}>
                 <TeamEmblemEdit
-                  picture={this.props.team.picture}
+                  picture={picture}
                   onChange={this.handleChangeEmblem}
                 />
               </Grid.Column>

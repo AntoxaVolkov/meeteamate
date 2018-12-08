@@ -9,8 +9,6 @@ import { NavLink as Link } from "react-router-dom";
 import { Menu, Dropdown, Loader } from "semantic-ui-react";
 import Avatar from "components/Avatar";
 
-import avatar from "images/square-image.png";
-
 export default class ProfileBar extends PureComponent {
   constructor(props) {
     super(props);

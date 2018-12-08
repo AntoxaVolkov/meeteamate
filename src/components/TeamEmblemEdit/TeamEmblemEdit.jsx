@@ -7,6 +7,8 @@ import Emblem from "components/Emblem";
 
 import { confApi } from "configApp";
 
+import avatar from "images/square-image.png";
+
 export default class TeamEmblemEdit extends PureComponent {
   constructor(props) {
     super(props);
@@ -21,11 +23,16 @@ export default class TeamEmblemEdit extends PureComponent {
     picture: PropTypes.object
   };
 
-  static defaultProps = {};
+  static defaultProps = { picture: null };
 
   componentDidMount() {
-    let { picture } = this.props;
-    let previewUrl = confApi.baseUrl + picture.thumb.url;
+    let previewUrl;
+    if (this.props.picture) {
+      previewUrl = confApi.baseUrl + this.props.picture.thumb.url;
+    } else {
+      previewUrl = avatar;
+    }
+
     this.setState({ previewUrl });
   }
 
