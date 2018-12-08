@@ -18,7 +18,7 @@ export default handleActions(
     [teamsRequest]: state => {
       return {
         ...state,
-        isLoading: true,
+        isFetching: true,
         didInvalidate: false
       };
     },
@@ -27,7 +27,7 @@ export default handleActions(
         ...state,
         teams,
         count,
-        isLoading: false,
+        isFetching: false,
         didInvalidate: false
       };
     },
@@ -35,7 +35,7 @@ export default handleActions(
       return {
         ...state,
         didInvalidate: true,
-        isLoading: false
+        isFetching: false
       };
     }
   },

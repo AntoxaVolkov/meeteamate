@@ -1,6 +1,7 @@
 import React, { PureComponent, Fragment } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import { withRouter } from "react-router";
 
 import { createTeam } from "actions/actionsTeams";
 import TeamEdit from "components/TeamEdit";
@@ -11,14 +12,19 @@ class TeamAddContainer extends PureComponent {
     this.state = {};
   }
 
-  static propTypes = { addTeam: PropTypes.func.isRequired };
+  static propTypes = {
+    addTeam: PropTypes.func.isRequired,
+    history: PropTypes.object.isRequired
+  };
 
   static defaultProps = {};
 
   handleSubmit = formdata => {
-    const { addTeam } = this.props;
+    const { addTeam, history } = this.props;
     console.log(formdata);
-    addTeam(formdata);
+    addTeam(formdata).then(id => {
+      history.push(`/team/${id}`);
+    });
   };
 
   render() {
@@ -48,4 +54,4 @@ function mapDispatchToProps(dispatch, props) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(TeamAddContainer);
+)(withRouter(TeamAddContainer));

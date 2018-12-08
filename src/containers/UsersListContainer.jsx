@@ -41,9 +41,10 @@ class UsersListContainer extends PureComponent {
 
   render() {
     const { users, isFetching, limit, count, page } = this.props;
+
     return (
       <Fragment>
-        <UsersList limit={limit} users={users} />
+        <UsersList isFetching={isFetching} users={users} />
         <Pagination
           pagPath="/search/users"
           pages={Math.ceil(count / limit)}
