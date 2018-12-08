@@ -59,7 +59,7 @@ export default class ProfileBar extends PureComponent {
             item
           >
             <Dropdown.Menu>
-              <Dropdown.Item>
+              <Dropdown.Item className="toProfile">
                 <Link className="nav-link" to="/profile">
                   Профиль
                 </Link>
