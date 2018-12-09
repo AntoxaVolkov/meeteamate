@@ -16,11 +16,27 @@ export default class HomeTopBlock extends PureComponent {
 
   static defaultProps = {};
 
+  scrollForRegistration = () => {
+    const a = document.getElementById("findTeamButton");
+    const b = document.getElementById("findTeamBlock");
+
+    const scroll = () => {
+      window.scrollBy(0, 50);
+      console.log(b.getBoundingClientRect().bottom);
+      if (
+        b.getBoundingClientRect().bottom >
+        b.getBoundingClientRect().height * -1
+      )
+        requestAnimationFrame(scroll);
+    };
+    const requestId = requestAnimationFrame(scroll);
+  };
+
   render() {
     const {} = this.props;
 
     return (
-      <div className="home-top-block">
+      <div className="home-top-block" id="findTeamBlock">
         {/*<svg
           width="160"
           height="132"
@@ -34,7 +50,13 @@ export default class HomeTopBlock extends PureComponent {
         </svg>*/}
         <Logo className="home-top-block__logo" />
         <h1 className="home-top-block__title">Meeteamate</h1>
-        <button className="home-top-block__find-team">Найти команду</button>
+        <button
+          className="home-top-block__find-team"
+          id="findTeamButton"
+          onClick={this.scrollForRegistration}
+        >
+          Найти команду
+        </button>
       </div>
     );
   }

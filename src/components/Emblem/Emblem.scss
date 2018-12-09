@@ -4,6 +4,26 @@
   height: 156px;
   position: relative;
   width: 156px;
+    
+  &.--medium {    
+      width: 80px;
+      height: 80px;
+  }
+    
+  &.--medium &__img {    
+      width: 80px;
+      height: 80px;
+  }
+    
+  &.--mini {    
+      width: 40px;
+      height: 40px;
+  }
+    
+  &.--mini &__img {    
+      width: 40px;
+      height: 40px;
+  }
 
   &__img {
     background-color: rgb(232, 252, 243);

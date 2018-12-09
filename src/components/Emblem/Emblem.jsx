@@ -7,12 +7,22 @@ import classNames from "classnames";
 export default class Emblem extends PureComponent {
   static propTypes = {
     url: PropTypes.string,
-    className: PropTypes.string
+    className: PropTypes.string,
+    medium: PropTypes.bool,
+    mini: PropTypes.bool
+  };
+
+  static defaultProps = {
+    medium: false,
+    mini: false
   };
 
   render() {
-    let { url, className } = this.props;
-    const emblemClass = classNames("emblem", className);
+    let { url, className, medium, mini } = this.props;
+    const emblemClass = classNames("emblem", className, {
+      "--medium": medium,
+      "--mini": mini
+    });
     return (
       <div className={emblemClass}>
         <div
