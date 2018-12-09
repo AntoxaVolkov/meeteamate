@@ -24,7 +24,7 @@ export default handleActions(
       return {
         items: {
           ...state.items,
-          [payload.id]: { ...payload, type: "succsess" }
+          [payload.id]: { ...payload, type: "success" }
         }
       };
     },
