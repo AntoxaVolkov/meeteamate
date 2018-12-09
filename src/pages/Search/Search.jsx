@@ -9,6 +9,8 @@ import { Container, Grid, Segment, Button } from "semantic-ui-react";
 
 import UsersListContainer from "containers/UsersListContainer";
 
+import Filter from "components/Filter";
+
 import Teams from "pages/Teams";
 import Users from "pages/Users";
 
@@ -42,7 +44,16 @@ export default class Search extends PureComponent {
           </Segment>
           <Grid>
             <Grid.Row column={2}>
-              <Grid.Column width={4}>Фильтры</Grid.Column>
+              <Grid.Column width={4}>
+                <Filter
+                  search={
+                    window.location.pathname.split("/")[2] === "teams" ||
+                    window.location.pathname.split("/")[2] === undefined
+                      ? "teams"
+                      : "users"
+                  }
+                />
+              </Grid.Column>
               <Grid.Column width={10}>
                 <Route exact path="/search" component={Teams} />
                 <Route exact path="/search/users" component={Users} />
