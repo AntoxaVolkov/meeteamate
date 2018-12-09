@@ -20,7 +20,6 @@ export const getUser = uid => async dispatch => {
     dispatch(addUsers({ users: { [id]: user } }));
     dispatch(userSuccsess());
   } catch (error) {
-    console.log(error);
     dispatch(userFailure(error));
   }
 };
@@ -32,15 +31,12 @@ export const updateUserFailure = createAction("[User] Update User (failure)");
 export const updateUser = data => async dispatch => {
   dispatch(userRequest());
   try {
-    console.log(data);
     let token = await dispatch(getChekedToken());
     let user = await Users.updateUser({ data, token });
-    console.log(user);
     let { id } = user;
     dispatch(addUsers({ users: { [id]: user } }));
     dispatch(userSuccsess());
   } catch (error) {
-    console.log(error);
     dispatch(userFailure(error));
   }
 };
@@ -48,15 +44,12 @@ export const updateUser = data => async dispatch => {
 export const updateUserAvatar = data => async dispatch => {
   dispatch(userRequest());
   try {
-    console.log(data);
     let token = await dispatch(getChekedToken());
     let user = await Users.updateUserAvatar({ data, token });
-    console.log(user);
     let { id } = user;
     dispatch(addUsers({ users: { [id]: user } }));
     dispatch(userSuccsess());
   } catch (error) {
-    console.log(error);
     dispatch(userFailure(error));
   }
 };

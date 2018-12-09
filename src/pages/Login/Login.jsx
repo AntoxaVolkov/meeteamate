@@ -19,7 +19,6 @@ export default class Login extends PureComponent {
 
   render() {
     const { location } = this.props;
-    console.log(location);
     return (
       <div className="login-page">
         <Container>

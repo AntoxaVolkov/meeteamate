@@ -17,7 +17,7 @@ export default class TeamFilter extends PureComponent {
   static defaultProps = {};
 
   func = (e, data) => {
-    console.log(data.value);
+    // при изменении селекта
   };
 
   render() {

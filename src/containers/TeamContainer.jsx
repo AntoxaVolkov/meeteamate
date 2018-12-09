@@ -18,7 +18,6 @@ class TeamContainer extends PureComponent {
   };
 
   componentDidMount() {
-    console.log("componentDidMouted");
     this.loadTeam();
   }
 
@@ -41,7 +40,6 @@ class TeamContainer extends PureComponent {
 }
 
 function mapStateToProps(state, ownProps) {
-  console.log(state.team);
   return {
     ...ownProps,
     ...state.team,

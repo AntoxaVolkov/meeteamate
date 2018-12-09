@@ -21,11 +21,9 @@ export const getTeams = ({ page, limit }) => async dispatch => {
     dispatch(teamsRequest());
     let token = await dispatch(getChekedToken());
     let { entities, result } = await Teams.getTeams({ page, limit, token });
-    console.log(entities, result);
     dispatch(addTeams({ teams: entities.teams }));
     dispatch(teamsSuccsess({ count: result.count, teams: result.teams }));
   } catch (error) {
-    console.log(error);
     dispatch(teamsFailure(error));
     return Promise.reject(error);
   }
@@ -44,7 +42,6 @@ export const getTeam = uid => async dispatch => {
     dispatch(addTeams({ teams: { [id]: team } }));
     dispatch(teamSuccsess());
   } catch (error) {
-    console.log(error);
     dispatch(teamFailure(error));
   }
 };
@@ -56,15 +53,12 @@ export const updateTeamFailure = createAction("[Team] Update Team (failure)");
 export const updateTeam = data => async dispatch => {
   dispatch(teamRequest());
   try {
-    console.log(data);
     let token = await dispatch(getChekedToken());
     let team = await Teams.updateTeam({ data, token });
-    console.log(team);
     let { id } = team;
     dispatch(addTeams({ teams: { [id]: team } }));
     dispatch(teamSuccsess());
   } catch (error) {
-    console.log(error);
     dispatch(teamFailure(error));
   }
 };
@@ -72,17 +66,14 @@ export const updateTeam = data => async dispatch => {
 export const createTeam = data => async dispatch => {
   dispatch(teamRequest());
   try {
-    console.log(data);
     let token = await dispatch(getChekedToken());
     let team = await Teams.createTeam({ data, token });
-    console.log(team);
     let { id } = team;
     dispatch(addTeams({ teams: { [id]: team } }));
     dispatch(teamSuccsess());
     dispatch(newSuccsess({ title: "Команда создана" }));
     return Promise.resolve(id);
   } catch (error) {
-    console.log(error);
     dispatch(teamFailure(error));
     return Promise.reject(error);
   }

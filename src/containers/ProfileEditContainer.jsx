@@ -24,13 +24,11 @@ class ProfileEditConteiner extends PureComponent {
 
   handleSubmit = formdata => {
     const { updateUser } = this.props;
-    console.log(formdata);
     updateUser(formdata);
   };
 
   handleFileSubmit = formdata => {
     const { updateUserAvatar } = this.props;
-    console.log(formdata);
     updateUserAvatar(formdata);
   };
 

@@ -20,7 +20,6 @@ class TeamEditContainer extends PureComponent {
   };
 
   componentDidMount() {
-    console.log("componentDidMouted Edit");
     this.loadTeam();
   }
 
@@ -39,7 +38,6 @@ class TeamEditContainer extends PureComponent {
 
   handleSubmit = formdata => {
     const { updateTeam, tid } = this.props;
-    console.log(formdata);
     updateTeam({ formdata, tid });
   };
 

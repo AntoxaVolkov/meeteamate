@@ -18,7 +18,6 @@ export default class Team extends PureComponent {
   render() {
     const { team, className, currentUID } = this.props;
     const teamClass = classNames("team", className);
-    console.log(team);
     return (
       <div className={teamClass}>
         <Container>

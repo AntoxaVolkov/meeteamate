@@ -22,7 +22,6 @@ export default class HomeTopBlock extends PureComponent {
 
     const scroll = () => {
       window.scrollBy(0, 50);
-      console.log(b.getBoundingClientRect().bottom);
       if (
         b.getBoundingClientRect().bottom >
         b.getBoundingClientRect().height * -1

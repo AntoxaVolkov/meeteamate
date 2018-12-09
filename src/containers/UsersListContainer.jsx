@@ -30,7 +30,6 @@ class UsersListContainer extends PureComponent {
 
   componentDidUpdate(prevProps) {
     if (prevProps.page !== this.props.page) {
-      console.log("loadUsers");
       this.loadUsers(this.props.page);
     }
   }

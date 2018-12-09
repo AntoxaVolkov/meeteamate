@@ -40,7 +40,6 @@ async function updateTeam({ data, token }) {
 }
 
 async function createTeam({ data, token }) {
-  console.log(data);
   try {
     let team = await formDataFetch(`teams`, "POST", data, token);
     if (team.id) {

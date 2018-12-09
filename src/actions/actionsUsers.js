@@ -15,7 +15,6 @@ export const loadUsers = ({ page, limit }) => async dispatch => {
     dispatch(addUsers({ users: entities.users }));
     dispatch(usersSuccsess(result));
   } catch (error) {
-    console.log(error);
     dispatch(usersFailure(error));
     return Promise.reject(error);
   }

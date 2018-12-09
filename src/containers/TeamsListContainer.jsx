@@ -29,7 +29,6 @@ class TeamsListContainer extends PureComponent {
 
   componentDidUpdate(prevProps) {
     if (prevProps.page !== this.props.page) {
-      console.log("loadTeams");
       this.loadTeams(this.props.page);
     }
   }
