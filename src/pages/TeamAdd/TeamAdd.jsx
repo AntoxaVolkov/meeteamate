@@ -17,6 +17,10 @@ export default class TeamAdd extends PureComponent {
 
   static defaultProps = {};
 
+  componentDidMount() {
+    document.title = "meeTEAMate - Создание";
+  }
+
   render() {
     const {} = this.props;
 

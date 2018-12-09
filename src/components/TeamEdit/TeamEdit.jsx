@@ -40,6 +40,7 @@ export default class TeamEdit extends PureComponent {
     if (team) {
       let { title, summary, body } = team;
       this.setState({ title, summary, body });
+      document.title = `meeTEAMate - ${title}`;
     }
   }
 

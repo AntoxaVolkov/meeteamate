@@ -18,6 +18,10 @@ export default class Profile extends PureComponent {
 
   static defaultProps = {};
 
+  componentDidMount() {
+    document.title = "meeTEAMate - Профиль";
+  }
+
   render() {
     const { match } = this.props;
 

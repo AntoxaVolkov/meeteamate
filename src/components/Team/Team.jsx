@@ -15,6 +15,11 @@ export default class Team extends PureComponent {
     className: PropTypes.string,
     currentUID: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
   };
+
+  componentDidMount() {
+    document.title = `meeTEAMate - ${this.props.team.title}`;
+  }
+
   render() {
     const { team, className, currentUID } = this.props;
     const teamClass = classNames("team", className);

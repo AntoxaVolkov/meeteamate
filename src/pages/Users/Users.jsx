@@ -10,6 +10,10 @@ export default class Users extends PureComponent {
     match: PropTypes.object
   };
 
+  componentDidMount() {
+    document.title = "meeTEAMate - Поиск пользователей";
+  }
+
   render() {
     let page = this.props.match.params.page || 1;
     return (

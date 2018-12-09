@@ -12,6 +12,10 @@ import joinTeamImg from "images/join-team.svg";
 import createDiscussionsImg from "images/create-discussions.svg";
 
 export default class Home extends Component {
+  componentDidMount() {
+    document.title = "meeTEAMate";
+  }
+
   render() {
     return (
       <div>

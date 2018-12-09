@@ -15,6 +15,10 @@ export default class Faq extends PureComponent {
 
   static defaultProps = {};
 
+  componentDidMount() {
+    document.title = "meeTEAMate - FAQ";
+  }
+
   render() {
     const {} = this.props;
 
