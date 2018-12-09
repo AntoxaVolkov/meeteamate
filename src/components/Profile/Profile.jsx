@@ -42,10 +42,12 @@ export default class Profile extends Component {
               <Grid.Column width={10}>
                 <div className="profile__fullname">{user.fullname}</div>
                 <div className="profile__username">{user.username}</div>
-                <div className="profile__city">
-                  <Icon name="map marker alternate" />
-                  {user.city}
-                </div>
+                {user.city && (
+                  <div className="profile__city">
+                    <Icon name="map marker alternate" />
+                    {user.city}
+                  </div>
+                )}
                 <div className="profile__about">{user.about}</div>
               </Grid.Column>
             </Grid.Row>
