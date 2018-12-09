@@ -70,6 +70,7 @@ export const createTeam = data => async dispatch => {
     let { id } = team;
     dispatch(addTeams({ teams: { [id]: team } }));
     dispatch(teamSuccsess());
+    dispatch(newInfo({ title: "Команда создана" }));
     return Promise.resolve(id);
   } catch (error) {
     console.log(error);

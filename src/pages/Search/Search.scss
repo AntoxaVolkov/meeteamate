@@ -1,2 +1,26 @@
-.search {}
+.search {
+    &__switch-control{
+        justify-self: center;
+    }
+
+    &__switch-text{
+        justify-self: self-start;
+        margin-right: 30px;
+    }
+    &__switch-or{
+      &:before{
+        margin-top: -1.1em !important;
+        margin-left: -1.1em !important;
+        width: 2.3em !important;
+        height: 2.3em !important;
+        line-height: 2.3em !important;
+      }
+    }
+
+    &__switch{
+        display: flex;
+        align-items: center;
+        margin-top: 14px !important;
+    }
+}
       

@@ -45,8 +45,8 @@ export default class Notification extends PureComponent {
           onDismiss={this.handleDismiss}
           className={classMessage}
           floating
-          header={noty.title}
-          content={noty.msg}
+          header={noty.title || ""}
+          content={noty.msg || ""}
           size="mini"
         />
       </div>

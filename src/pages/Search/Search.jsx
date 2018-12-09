@@ -31,17 +31,19 @@ export default class Search extends PureComponent {
     return (
       <div className="search">
         <Container>
-          <Segment>
-            Искать:{" "}
-            <Button.Group>
-              <Link to="/search" className="ui button">
-                Команду
-              </Link>
-              <Button.Or />
-              <Link to="/search/users" className="ui button">
-                Пользователя
-              </Link>
-            </Button.Group>
+          <Segment className="search__switch">
+            <div className="search__switch-text">Искать: </div>
+            <div className="search__switch-control">
+              <Button.Group>
+                <Link to="/search" className="ui button">
+                  Команду
+                </Link>
+                <Button.Or text="или" className="search__switch-or" />
+                <Link to="/search/users" className="ui button">
+                  Пользователя
+                </Link>
+              </Button.Group>
+            </div>
           </Segment>
           <Grid>
             <Grid.Row column={2}>
