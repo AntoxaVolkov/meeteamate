@@ -25,6 +25,10 @@ export default class Search extends PureComponent {
 
   static defaultProps = {};
 
+  componentDidMount() {
+    document.title = "meeTEAMate - Поиск";
+  }
+
   render() {
     const {} = this.props;
 

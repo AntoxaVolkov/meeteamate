@@ -15,7 +15,6 @@ export default class LoginForm extends PureComponent {
   toggle = () => this.setState({ noremember: !this.state.checked });
   handleSubmit = () => {
     let { email, password, noremember } = this.state;
-    console.log({ email, password, noremember });
     this.props.onSubmit({ email, password, noremember });
   };
 
@@ -81,7 +80,6 @@ export default class LoginForm extends PureComponent {
         </Form>
       </div>
     );
-    console.log(redirectPath);
     const redirect = (
       <Redirect
         to={{

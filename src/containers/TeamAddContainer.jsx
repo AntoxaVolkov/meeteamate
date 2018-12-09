@@ -21,7 +21,6 @@ class TeamAddContainer extends PureComponent {
 
   handleSubmit = formdata => {
     const { addTeam, history } = this.props;
-    console.log(formdata);
     addTeam(formdata).then(id => {
       history.push(`/team/${id}`);
     });

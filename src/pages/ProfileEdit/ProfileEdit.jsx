@@ -18,6 +18,10 @@ export default class ProfileEdit extends PureComponent {
 
   static defaultProps = {};
 
+  componentDidMount() {
+    document.title = "meeTEAMate - Профиль";
+  }
+
   render() {
     const {} = this.props;
 

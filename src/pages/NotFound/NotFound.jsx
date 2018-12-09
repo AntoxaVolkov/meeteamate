@@ -7,6 +7,10 @@ import { Container } from "semantic-ui-react";
 export default class NotFound extends PureComponent {
   static propTypes = { location: PropTypes.object.isRequired };
 
+  componentDidMount() {
+    document.title = "meeTEAMate - 404";
+  }
+
   render() {
     const { location } = this.props;
 

@@ -18,12 +18,10 @@ class ProfileConteiner extends Component {
   };
 
   componentDidMount() {
-    console.log("componentDidMouted");
     this.loadUser();
   }
 
   componentDidUpdate(prevProps) {
-    console.log("componentDidUpdate");
     let { users, getUser, uid, error, selfId } = this.props;
     if (uid !== prevProps.uid) this.loadUser();
   }
@@ -54,7 +52,6 @@ class ProfileConteiner extends Component {
 }
 
 function mapStateToProps(state, ownProps) {
-  console.log(state.user);
   return {
     ...ownProps,
     ...state.user,

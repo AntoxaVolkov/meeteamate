@@ -39,8 +39,6 @@ export default class ProfileAvaEdit extends PureComponent {
     const { image } = this.state;
     const formdata = new FormData();
 
-    console.log(image);
-
     formdata.append("picture", image);
     formdata.append("id", id);
     onSubmit(formdata);

@@ -45,7 +45,7 @@ export const login = ({ email, password, noremember }) => async dispatch => {
       dispatch(authFailure(error));
     } else {
       dispatch(userLogout());
-      console.log(error); // Сделать уведомления о системных ошибках
+      // Сделать уведомления о системных ошибках
     }
 
     return Promise.reject(error);

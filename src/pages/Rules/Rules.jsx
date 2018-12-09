@@ -15,6 +15,10 @@ export default class Rules extends PureComponent {
 
   static defaultProps = {};
 
+  componentDidMount() {
+    document.title = "meeTEAMate - Правила";
+  }
+
   render() {
     const {} = this.props;
 

@@ -17,9 +17,12 @@ export default class Login extends PureComponent {
 
   static defaultProps = {};
 
+  componentDidMount() {
+    document.title = "meeTEAMate - Вход";
+  }
+
   render() {
     const { location } = this.props;
-    console.log(location);
     return (
       <div className="login-page">
         <Container>
