@@ -1,13 +1,13 @@
 import { handleActions } from "redux-actions";
 
 import {
-  usersRequest,
-  usersSuccsess,
-  usersFailure
-} from "actions/actionsUsers";
+  teamsRequest,
+  teamsSuccsess,
+  teamsFailure
+} from "actions/actionsTeams";
 
 const initialState = {
-  users: [],
+  teams: [],
   count: 0,
   isFetching: false,
   didInvalidate: false
@@ -15,27 +15,27 @@ const initialState = {
 
 export default handleActions(
   {
-    [usersRequest]: state => {
+    [teamsRequest]: state => {
       return {
         ...state,
-        isLoading: true,
+        isFetching: true,
         didInvalidate: false
       };
     },
-    [usersSuccsess]: (state, { payload: { users, count } }) => {
+    [teamsSuccsess]: (state, { payload: { teams, count } }) => {
       return {
         ...state,
-        users,
+        teams,
         count,
-        isLoading: false,
+        isFetching: false,
         didInvalidate: false
       };
     },
-    [usersFailure]: state => {
+    [teamsFailure]: state => {
       return {
         ...state,
         didInvalidate: true,
-        isLoading: false
+        isFetching: false
       };
     }
   },

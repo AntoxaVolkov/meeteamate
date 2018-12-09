@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 
 import { getTeam } from "actions/actionsTeams";
 import Team from "components/Team";
+import PageLoade from "components/PageLoader";
 
 class TeamContainer extends PureComponent {
   static propTypes = {
@@ -30,10 +31,11 @@ class TeamContainer extends PureComponent {
 
   render() {
     const { tid, teams, className, currentUID } = this.props;
+
     return teams[tid] ? (
       <Team className={className} currentUID={currentUID} team={teams[tid]} />
     ) : (
-      ""
+      <PageLoade active />
     );
   }
 }

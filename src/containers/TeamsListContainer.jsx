@@ -43,7 +43,7 @@ class TeamsListContainer extends PureComponent {
     const { teams, isFetching, limit, count, page } = this.props;
     return (
       <Fragment>
-        <TeamsList limit={limit} teams={teams} />
+        <TeamsList isFetching={isFetching} teams={teams} />
         <Pagination
           pagPath="/search/teams"
           pages={Math.ceil(count / limit)}

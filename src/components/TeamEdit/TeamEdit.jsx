@@ -4,12 +4,13 @@ import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import {
-  Container,
   Form,
   Input,
   Segment,
   Button,
-  Grid
+  Grid,
+  Dimmer,
+  Loader
 } from "semantic-ui-react";
 
 import TeamEmblemEdit from "components/TeamEmblemEdit";
@@ -27,7 +28,8 @@ export default class TeamEdit extends PureComponent {
 
   static propTypes = {
     team: PropTypes.object,
-    onSubmit: PropTypes.func.isRequired
+    onSubmit: PropTypes.func.isRequired,
+    isFetching: PropTypes.bool
   };
 
   //static defaultProps = { team: false };
@@ -59,11 +61,14 @@ export default class TeamEdit extends PureComponent {
   };
 
   render() {
-    //const {onSubmit} = this.props;
+    let picture = this.props.team ? this.props.team.picture : null;
 
     return (
       <div className="team-edit">
         <Segment>
+          <Dimmer active={this.props.isFetching}>
+            <Loader />
+          </Dimmer>
           <Grid columns={2}>
             <Grid.Row>
               <Grid.Column width={12}>
@@ -116,7 +121,7 @@ export default class TeamEdit extends PureComponent {
               </Grid.Column>
               <Grid.Column width={4}>
                 <TeamEmblemEdit
-                  picture={this.props.team.picture}
+                  picture={picture}
                   onChange={this.handleChangeEmblem}
                 />
               </Grid.Column>

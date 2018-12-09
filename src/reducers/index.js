@@ -1,15 +1,17 @@
 import { combineReducers } from "redux";
 
-import reducerUsers from "./reduserUsers";
-import reducerUser from "./reduserUser";
-import reduserUsersShown from "./reduserUsersShown";
+import reducerUsers from "./users";
+import reducerUser from "./user";
+import reduserUsersShown from "./usersShown";
 
-import reducerTeams from "./reduserTeams";
-import reducerTeam from "./reduserTeam";
-import reduserTeamsShown from "./reduserTeamsShown";
+import reducerTeams from "./teams";
+import reducerTeam from "./team";
+import reduserTeamsShown from "./teamsShown";
 
-import reducerAuth from "./reduserAuth";
-import reducerRegister from "./reduserRegister";
+import reducerAuth from "./auth";
+import reducerRegister from "./register";
+
+import notifications from "./notifications";
 
 export default combineReducers({
   users: reducerUsers,
@@ -19,5 +21,6 @@ export default combineReducers({
   team: reducerTeam,
   teamsShown: reduserTeamsShown,
   auth: reducerAuth,
-  register: reducerRegister
+  register: reducerRegister,
+  notifications
 });

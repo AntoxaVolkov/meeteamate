@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 
 import { getTeam, updateTeam } from "actions/actionsTeams";
 import TeamEdit from "components/TeamEdit";
+import PageLoader from "components/PageLoader";
 
 class TeamEditContainer extends PureComponent {
   static propTypes = {
@@ -43,11 +44,15 @@ class TeamEditContainer extends PureComponent {
   };
 
   render() {
-    const { teams, tid } = this.props;
+    const { teams, tid, isFetching } = this.props;
     return teams[tid] ? (
-      <TeamEdit team={teams[tid]} onSubmit={this.handleSubmit} />
+      <TeamEdit
+        isFetching={isFetching}
+        team={teams[tid]}
+        onSubmit={this.handleSubmit}
+      />
     ) : (
-      ""
+      <PageLoader active />
     );
   }
 }

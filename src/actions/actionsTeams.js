@@ -70,9 +70,11 @@ export const createTeam = data => async dispatch => {
     let { id } = team;
     dispatch(addTeams({ teams: { [id]: team } }));
     dispatch(teamSuccsess());
+    return Promise.resolve(id);
   } catch (error) {
     console.log(error);
     dispatch(teamFailure(error));
+    return Promise.reject(error);
   }
 };
 

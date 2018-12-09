@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 import { loadUsers } from "actions/actionsUsers";
+import { getUsersList } from "reducers/usersShown";
 import UsersList from "components/UsersList";
 import Pagination from "components/Pagination";
 
@@ -41,9 +42,10 @@ class UsersListContainer extends PureComponent {
 
   render() {
     const { users, isFetching, limit, count, page } = this.props;
+
     return (
       <Fragment>
-        <UsersList limit={limit} users={users} />
+        <UsersList isFetching={isFetching} users={users} />
         <Pagination
           pagPath="/search/users"
           pages={Math.ceil(count / limit)}
@@ -58,7 +60,7 @@ function mapStateToProps(state, ownProps) {
   return {
     ...ownProps,
     ...state.usersShown,
-    users: state.usersShown.users.map(userId => state.users.items[userId])
+    users: getUsersList(state)
   };
 }
 
