@@ -6,3 +6,15 @@
         margin-right: 10px;
     }
 }
+
+.ui.menu .ui.dropdown .menu .toProfile {
+    padding: 0 !important;
+    height: 40px;
+
+    a {
+        display: block;
+        height: 100%;
+        line-height: 40px;
+        padding-left: 16px;
+    }
+}
