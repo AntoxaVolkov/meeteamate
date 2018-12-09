@@ -6,6 +6,11 @@ import { Container } from "semantic-ui-react";
 import HomeTopBlock from "components/HomeTopBlock";
 import HomeBottomBlock from "components/HomeBottomBlock";
 
+import createTeamImg from "images/create-teams.svg";
+import findUsersImg from "images/find-users.svg";
+import joinTeamImg from "images/join-team.svg";
+import createDiscussionsImg from "images/create-discussions.svg";
+
 export default class Home extends Component {
   render() {
     return (
@@ -24,19 +29,19 @@ export default class Home extends Component {
             <div className="home-page__opportunities">
               <div className="home-page__opportunitie">
                 <h3>Создавайте команды</h3>
-                <img src="../../src/assets/images/create-teams.svg" />
+                <img src={createTeamImg} />
               </div>
               <div className="home-page__opportunitie">
                 <h3>Находите товарищей</h3>
-                <img src="../../src/assets/images/find-users.svg" />
+                <img src={findUsersImg} />
               </div>
               <div className="home-page__opportunitie">
                 <h3>Вступайте в существующие команды</h3>
-                <img src="../../src/assets/images/join-team.svg" />
+                <img src={joinTeamImg} />
               </div>
               <div className="home-page__opportunitie">
                 <h3>Создавайте обсуждения внутри команды</h3>
-                <img src="../../src/assets/images/create-discussions.svg" />
+                <img src={createDiscussionsImg} />
               </div>
             </div>
 

@@ -15,7 +15,7 @@ export default class Notification extends PureComponent {
   componentDidMount() {
     let timeoutId = setTimeout(() => {
       this.props.onDismiss(this.props.noty.id);
-    }, 50000);
+    }, 5000);
 
     this.setState({ timeoutId, open: true });
   }
@@ -45,8 +45,8 @@ export default class Notification extends PureComponent {
           onDismiss={this.handleDismiss}
           className={classMessage}
           floating
-          header={noty.title}
-          content={noty.msg}
+          header={noty.title || ""}
+          content={noty.msg || ""}
           size="mini"
         />
       </div>

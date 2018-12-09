@@ -3,6 +3,15 @@ import { createAction } from "redux-actions";
 import { getChekedToken } from "actions/actionsAuth";
 import Teams from "api/teams";
 
+import {
+  newError,
+  newSuccsess,
+  newWarning,
+  newInfo,
+  newNoty,
+  removeNoty
+} from "actions/actionsNotifications";
+
 export const teamsRequest = createAction("[Teams] Load  (request)");
 export const teamsSuccsess = createAction("[Teams] Load (succsess)");
 export const teamsFailure = createAction("[Teams] Load (failure)");
@@ -70,6 +79,7 @@ export const createTeam = data => async dispatch => {
     let { id } = team;
     dispatch(addTeams({ teams: { [id]: team } }));
     dispatch(teamSuccsess());
+    dispatch(newSuccsess({ title: "Команда создана" }));
     return Promise.resolve(id);
   } catch (error) {
     console.log(error);

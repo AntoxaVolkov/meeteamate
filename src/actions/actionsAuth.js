@@ -70,7 +70,6 @@ export const reLogin = () => async dispatch => {
       );
 
       getUser(payload["user_id"]);
-      dispatch(newInfo({ title: "Привет", msg: "Удачного дня" }));
       return Promise.resolve(res);
     } catch (error) {
       sessionStorage.setItem("access_token", "");
